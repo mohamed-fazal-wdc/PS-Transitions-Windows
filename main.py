@@ -22,23 +22,15 @@ for cycle in range(number_of_cycles):
     print(f"Cycle: {cycle+1}")
     result = True
     for ps in range(1,6):
-        print(f"Setting Power State: PS{ps}")
-        set_status = wdckit.set_power_state(selected_dut, ps)
-        if not set_status:
-            raise Exception("Unable to change Power State using SetFeature")
-        power_state = wdckit.get_power_state(selected_dut)
-        result = True if power_state == ps else False
-        print(f"Current Power State: PS{power_state}\tTest Status: {'Pass' if result == True else 'Fail'}")
-        if result == False:
-            break
-        print("Waiting for drive to return to PS0")
-        while True:
+        for transition in [0,ps]:
+            print(f"Setting Power State: PS{transition}")
+            set_status = wdckit.set_power_state(selected_dut, transition)
+            if not set_status:
+                raise Exception("Unable to change Power State using SetFeature")
             power_state = wdckit.get_power_state(selected_dut)
-            if power_state == 0:
-                print(f"Current Power State: PS{power_state}")
-                break
-    if not result:
-        break
-
+            result = True if power_state == transition else False
+            print(f"Current Power State: PS{power_state}\tTest Status: {'Pass' if result == True else 'Fail'}")
+            if result == False:
+                raise Exception("Unable to perform PST; Test FAILED!")
 sys.exit()
 
