@@ -7,9 +7,9 @@ duts = wdckit.get_duts()
 
 def select_dut():
     print("Following DUTs are detected:")
-    data = [["DUT", "Device", "Model Number", "Serial Number"]]
+    data = [["DUT", "Device", "Model Number", "Serial Number", "Boot Device"]]
     for dut in duts:
-        data.append([dut.DUT, dut.Device, dut.ModelNumber, dut.SerialNumber])
+        data.append([dut.DUT, dut.Device, dut.ModelNumber, dut.SerialNumber, dut.BootDevice])
     table = SingleTable(data)
     print(table.table)
     return input("Select the DUT (disk0/disk1): ")
