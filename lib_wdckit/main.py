@@ -81,7 +81,7 @@ class WDCKit:
 
     def get_duts(self):
         command = f'{self.exec_path} s --output json'
-        self.log(f"Executing command: {command}")
+        self.log(f"Executing command: {command}\n")
         output = self.__execute(command)
         _duts = self.__parse_results(output)
         duts = []
@@ -91,20 +91,20 @@ class WDCKit:
 
     def get_smart(self, device: str):
         command = f'{self.exec_path} getsmart {device} --output json'
-        self.log(f"Executing command: {command}")
+        self.log(f"Executing command: {command}\n")
         output = self.__execute(command)
         return self.__parse_results(output)
 
     def get_power_state(self, device: str) -> int:
         command = f'{self.exec_path} getfeature {device} -f 2'
-        self.log(f"Executing command: {command}")
+        self.log(f"Executing command: {command}\n")
         output = self.__execute(command)
         self.log(output.decode())
         return int(re.findall('Power State\s*([0-9])', output.decode(), re.MULTILINE)[0])
     
     def set_power_state(self, device: str, power_state: int) -> bool:
         command = f'{self.exec_path} setfeature {device} -f 2 -v {power_state} -m'
-        self.log(f"Executing command: {command}")
+        self.log(f"Executing command: {command}\n")
         output = self.__execute(command)
         self.log(output.decode())
         return True if "Success" in output.decode() else False
