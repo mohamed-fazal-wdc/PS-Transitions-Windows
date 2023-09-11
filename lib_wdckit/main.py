@@ -86,11 +86,11 @@ class WDCKit:
         output = self.__execute(f'{self.exec_path} getsmart {device} --output json')
         return self.__parse_results(output)
 
-    def get_power_state(self, device: str):
+    def get_power_state(self, device: str) -> int:
         output = self.__execute(f'{self.exec_path} getfeature {device} -f 2')
-        return re.findall('Power State\s*([0-9])', output.decode(), re.MULTILINE)[0]
+        return int(re.findall('Power State\s*([0-9])', output.decode(), re.MULTILINE)[0])
     
-    def set_power_state(self, device: str, power_state: int):
+    def set_power_state(self, device: str, power_state: int) -> bool:
         output = self.__execute(f'{self.exec_path} setfeature {device} -f 2 -v {power_state} -m')
         return True if "Success" in output.decode() else False
 
