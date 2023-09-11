@@ -7,6 +7,7 @@ import logging
 import json
 import io
 
+WDCKIT_LOG_FILE = 'runtime_logs.txt'
 
 # Turns a dictionary into a class
 class Dict2Class(object):
@@ -27,6 +28,10 @@ class WDCKit:
         self.version = "1.0.1"
         if accept_terms:
             self.__accept_terms()
+
+    def log(self, log_text):
+        with io.open(WDCKIT_LOG_FILE, 'a') as file:
+            file.write(log_text)
 
     def __execute(self, command):
         logging.debug(f'Executing: {command}')
@@ -75,7 +80,9 @@ class WDCKit:
         return op
 
     def get_duts(self):
-        output = self.__execute(f'{self.exec_path} s --output json')
+        command = f'{self.exec_path} s --output json'
+        self.log(f"Executing command: {command}")
+        output = self.__execute(command)
         _duts = self.__parse_results(output)
         duts = []
         for dut in _duts:
@@ -83,15 +90,23 @@ class WDCKit:
         return duts
 
     def get_smart(self, device: str):
-        output = self.__execute(f'{self.exec_path} getsmart {device} --output json')
+        command = f'{self.exec_path} getsmart {device} --output json'
+        self.log(f"Executing command: {command}")
+        output = self.__execute(command)
         return self.__parse_results(output)
 
     def get_power_state(self, device: str) -> int:
-        output = self.__execute(f'{self.exec_path} getfeature {device} -f 2')
+        command = f'{self.exec_path} getfeature {device} -f 2'
+        self.log(f"Executing command: {command}")
+        output = self.__execute(command)
+        self.log(output.decode())
         return int(re.findall('Power State\s*([0-9])', output.decode(), re.MULTILINE)[0])
     
     def set_power_state(self, device: str, power_state: int) -> bool:
-        output = self.__execute(f'{self.exec_path} setfeature {device} -f 2 -v {power_state} -m')
+        command = f'{self.exec_path} setfeature {device} -f 2 -v {power_state} -m'
+        self.log(f"Executing command: {command}")
+        output = self.__execute(command)
+        self.log(output.decode())
         return True if "Success" in output.decode() else False
 
 
