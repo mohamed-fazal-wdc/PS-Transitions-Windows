@@ -19,7 +19,7 @@ selected_dut = select_dut()
 number_of_cycles = int(input("Enter the number of cycles: "))
 
 for cycle in range(number_of_cycles):
-    print(f"Cycle: {cycle}")
+    print(f"Cycle: {cycle+1}")
     result = True
     for ps in range(1,6):
         print(f"Setting Power State: PS{ps}")
@@ -31,6 +31,12 @@ for cycle in range(number_of_cycles):
         print(f"Current Power State: PS{power_state}\tTest Status: {'Pass' if result == True else 'Fail'}")
         if result == False:
             break
+        print("Waiting for drive to return to PS0")
+        while True:
+            power_state = wdckit.get_power_state(selected_dut)
+            if power_state == 0:
+                print(f"Current Power State: PS{power_state}")
+                break
     if not result:
         break
 
