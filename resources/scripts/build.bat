@@ -14,7 +14,7 @@ timeout 2 /nobreak
 @REM # Compress to ZIP
 echo Creating ZIP
 tar -a -c -C "PST Windows" -f "PST Windows.zip" "*"
-timeout 1 /nobreak
+timeout 2 /nobreak
 rd "PST Windows" /s /q
 
 echo Build Success
