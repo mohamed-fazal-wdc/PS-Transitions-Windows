@@ -1,0 +1,37 @@
+Exhibit A
+Third Party Licenses
+The Software contains open source components as set forth in this Exhibit A.
+Please refer to the table below for the open source components and the
+associated license(s) for the terms and conditions for their use.  The source
+code for the components listedin Table 1 below may be obtained from Western
+Digital Technologies, Inc. Western Digital Technologies, Inc. may provide the
+open source code to you on a physical storage medium for a charge covering
+the cost of performing such distribution, which may include, without
+limitation the cost of media, shipping and handling.
+
+Table 1
+License        Component          License Available at
+NetBSD         Editline 3.1       http://www.netbsd.org/about/redistribution.html
+BSD            WinEditLine 2.206  http://mingweditline.sourceforge.net/?License
+MIT            Tclap 1.4          http://opensource.org/licenses/mit-license.php
+Ncurses        Ncurses 5.5        http://invisible-island.net/ncurses/ncurses-license.html
+Boost          Boost              http://www.boost.org/LICENSE_1_0.txt
+LGPL2.1        Glib 2.0           https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+GPLv3          libgcc             https://www.gnu.org/licenses/gcc-exception-faq.html
+GPLv3          libstdc++          https://gcc.gnu.org/onlinedocs/libstdc++/manual/license.html
+Public Domain  miniz 3.0.2        https://github.com/richgel999/miniz/releases
+MIT            ezxml 0.8.6        http://ezxml.sourceforge.net/license.txt
+Public Domain  PDCurses 3.9       https://pdcurses.org/
+
+Copies of each license can be found in the file Third-Party_Notices.txt.
+
+Notwithstanding anything to the contrary in this EULA, this EULA does not prohibit
+Licensee from modifying, or reverse engineering to debug any such modifications to,
+any portion of the Software that is subject to the LGPL license.
+
+Please also be informed that the Software may contain other Third Party Software listed in Table 2 below.
+
+Table 2
+License      Component                      Copyright Notice           License Available at
+Proprietary  Broadcom MegaRAID Storlib API  (c) 2004-2018 Broadcom     Confidential
+Proprietary  Phison DLL                     Copyright (c) PHISON 2021  Confidential

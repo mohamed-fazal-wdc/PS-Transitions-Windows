@@ -1,0 +1,383 @@
+IMPORTANT: PLEASE READ THIS END USER LICENSE AGREEMENT CAREFULLY.
+
+DOWNLOADING, INSTALLING OR USING THE ACCOMPANYING SOFTWARE CONSTITUTES
+ACCEPTANCE OF THIS END USER LICENSE AGREEMENT.
+
+WESTERN DIGITAL TECHNOLOGIES, INC. AND ITS AFFILIATES (COLLECTIVELY, "WESTERN
+DIGITAL") IS WILLING TO LICENSE THE SOFTWARE ONLY IF YOU ACCEPT ALL OF THE
+TERMS CONTAINED IN THIS END USER LICENSE AGREEMENT (THE "EULA").
+
+
+
+1. BY DOWNLOADING, INSTALLING OR USING THE SOFTWARE OR OTHERWISE EXPRESSING
+YOUR AGREEMENT TO THE TERMS CONTAINED IN THIS END USER LICENSE AGREEMENT, YOU
+INDIVIDUALLY AND ON BEHALF OF THE ENTITY THAT YOU REPRESENT (COLLECTIVELY,
+"LICENSEE") CONSENT TO BE BOUND BY THIS EULA AND THE AGREEMENT. IF YOU DO NOT
+OR CANNOT AGREE TO THE TERMS CONTAINED IN THIS AGREEMENT, THEN (A) DO NOT
+DOWNLOAD, INSTALL OR USE THE SOFTWARE. RETURN THE SOFTWARE TO WESTERN DIGITAL.
+
+
+
+1.1. No Sale.  This EULA governs Licensee's use of and access to the Software
+(as defined below) for any Software first placed in use on or after the release
+date of this EULA (the "Release Date").  Licensee agrees and acknowledges that
+all Software is licensed and not sold, and that all use of "purchase" or "sell"
+in connection with any Software shall be deemed to mean "license."  Any term in
+Licensee's purchase order or other document purporting to require the sale of
+Software instead of the license thereof is hereby rejected by Western Digital
+and is not part of the Agreement.
+
+
+
+1.2. No Implied Licenses; Licensed Material.  Nothing in this EULA shall be
+deemed to provide to Customer any right, title or interest in (i) any product
+sold by Western Digital or an authorized reseller of Western Digital (a
+"Product"); (ii) any instance of a program, module, feature, function, service,
+application, operation or capability of the software Western Digital
+intentionally delivers under this EULA; or (iii) any documentation related to
+any Software (the "Documentation"), other than the express license rights set
+forth in Section 3 hereof.
+
+
+
+2. Definitions.  In this EULA, the following capitalized terms shall have the
+meaning set forth below:
+
+
+
+2.1. "Agreement" shall mean this EULA.
+
+2.2. "Affiliate" of a Party means such Party's parent corporation, an entity
+under the control of such Party's parent corporation at any tier or an entity
+controlled by such Party at any tier.  For these purposes, "control" shall mean
+the power to direct or cause the direction of the management and policies of
+the entity, whether through the ownership of more than 50% of the outstanding
+voting interests in such entity or otherwise.
+
+2.3. "Party" means either Licensee or Western Digital and "Parties" means both
+Licensee and Western Digital.
+
+2.4. "Software" shall mean the wdckit software tool delivered under this EULA.
+
+2.5. "Third Party" means an individual or entity other than Licensee, Western
+Digital Technologies, Inc. and Western Digital Technologies, Inc.'s
+Affiliates.
+
+2.6. "User" means an individual able to use or gain access to any Software
+functionality.
+
+
+
+3. License Grant.
+
+3.1. Grant. Subject to the terms and conditions of this Agreement, Western
+Digital hereby grants to Licensee, and Licensee accepts, upon delivery of the
+Software, a nonexclusive, nontransferable license to install and use (subject
+to the limitations in Sections 3.2 and 3.3) each copy of the Software, in
+executable form only, supplied by Western Digital, and to use the accompanying
+Documentation, only for Licensee's internal use in Licensee owned data centers
+for failure analysis of Western Digital hardware products.  Licensee may make a
+reasonable number of copies of the Software for inactive backup and archival
+purposes.
+
+
+
+3.2. No Right to Sublicense or Assign.  Except to the extent otherwise required
+by applicable law or expressly provided for assignment generally in the
+Agreement, including without limitation in this EULA, no license provided in
+this Section 3 is sublicensable, transferable or assignable by Licensee,
+including by operation of law, change of control, merger, purchase or
+otherwise, without the prior written consent of Western Digital in each
+instance. Other than as expressly permitted by the foregoing, any attempted
+sublicense, transfer or assignment by Licensee shall be null and void.
+
+
+
+3.3. License Prohibitions. Notwithstanding anything to the contrary in this
+EULA, Licensee shall not, alone, through a User, an Affiliate or a Third Party
+(or allow a User, an Affiliate or a Third Party to):
+
+(a) sell, transfer, license, lease pledge, loan or otherwise make available to
+Third Parties any Software;
+
+(b) modify any Software;
+
+(c) reverse compile, reverse assemble, reverse engineer or otherwise translate
+all or any portion of any Software;
+
+(d) pledge, rent, lease, share, distribute, sell or create derivative works of
+any Software;
+
+(e) use any Software on a time sharing, service bureau, application service
+provider (ASP), rental or other similar basis;
+
+(f) make copies of any Software, except as provided for in the license grant
+above;
+
+(g) transfer any Software from a Product supplied by Western Digital to any
+hardware supplied by a Third Party;
+
+(h) remove, alter or deface (or attempt any of the foregoing) proprietary
+notices, labels or marks in any Software;
+
+(i) distribute any copy of any Software to any Third Party, including without
+limitation selling any Product with Software in a secondhand market;
+
+(j) use any Embedded Software other than with Products supplied by Western
+Digital or an authorized reseller of Western Digital or for more than the
+number of Products purchased from Western Digital or an authorized reseller of
+Western Digital;
+
+(k) disclose the results of testing or benchmarking of any Software to any
+Third Party without the prior written consent of Western Digital;
+
+(l) use any Update or Upgrade beyond those to which Licensee is entitled or
+with any Software to which Licensee does not have a valid, current license;
+
+(m) circumvent or disable Western Digital's copyright protection mechanisms or
+license management mechanisms;
+
+(n) use the Software in violation of any applicable law or to support any
+illegal activity; or
+
+(o) attempt any of the foregoing.
+
+Western Digital expressly reserves the right to seek all available legal and
+equitable remedies to prevent any of the foregoing and to recover any lost
+profits, damages or costs resulting from any of the foregoing.
+
+
+
+3.4. Legal Exception.  Licensee agrees that, to the extent that any applicable
+laws (including without limitation national laws implementing EC Directive
+91/250 on the Legal Protection of Computer Programs) give Licensee the right to
+reverse engineer any Software to make it interoperable without Western
+Digital's consent, before Licensee exercises any such rights, Licensee shall
+notify Western Digital of such desire and, no later than sixty (60) days
+following receipt of such request, Western Digital may decide either: (a) to
+perform the work to achieve such interoperability and charge its then-standard
+rates for such work to Licensee; or (b) to permit Licensee to reverse engineer
+parts of the Software only to the extent necessary to achieve such
+interoperability. Only if and after Western Digital at its sole discretion,
+partly or completely denies Licensee's request, shall Licensee exercise its
+statutory rights.
+
+
+
+3.5. Third Party Software.  Portions of the Software may be owned by one or
+more Third Parties and licensed to Western Digital. Western Digital and
+Licensee intend and agree that Software owned by Third Parties and supplied
+hereunder is being sublicensed to Licensee, that such Third Parties retain
+ownership of and title to such Software, network and that such Third Parties
+may directly enforce Licensee's obligations hereunder to protect their
+respective interests in such Software.  The warranty and indemnification
+provisions set forth herein shall not apply to Software owned by Third Parties
+and supplied hereunder.  The licenses/terms applicable to such Third Party
+licenses are set forth in Exhibit A.
+
+
+
+3.6. Software Support.  Unless otherwise agreed to as part of the Agreement,
+Western Digital does not offer or provide any technical support or other
+services under this EULA.
+
+
+
+4. Confidentiality.  Subject to any other confidentiality restrictions set
+forth in the Agreement, Licensee agrees the Software and Documentation are the
+confidential information of Western Digital. Licensee shall maintain the
+Software and Documentation in confidence, using the same degree of care it uses
+for its own confidential information of a similar nature, which shall be no
+less than reasonable and customary efforts in the software industry.
+
+
+
+5. Software Warranty.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, EXCEPT AS
+PROVIDED FOR IN THE AGREEMENT, THE SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS
+IS".  WESTERN DIGITAL MAKES NO OTHER WARRANTIES, EXPRESS OR IMPLIED, AND
+SPECIFICALLY DISCLAIMS THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT WITH RESPECT TO THE SOFTWARE AND THE
+DOCUMENTATION.  IN ADDITION, WESTERN DIGITAL DOES NOT WARRANT THAT THE
+SOFTWARE'S OPERATION WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT ALL DEFECTS
+WILL BE CORRECTED.
+
+
+
+6. Exclusive Remedies and Limitation of Liability.
+
+
+
+6.1. Definitions.  For purposes of the exclusive remedies and limitations of
+liability set forth in this Section 7, Western Digital shall be deemed to
+include its directors, officers, employees, agents, representatives,
+shareholders, subcontractors, licensors and suppliers; and "damages" shall be
+deemed to refer collectively to all injury, damage, loss or expense incurred.
+
+
+
+6.2. Maximum Liability.  Except as may otherwise be provided in the Agreement,
+Western Digital's maximum aggregate liability arising from or relating to this
+EULA or the use of the Software and Products shall not to exceed the total
+amount paid by Licensee to Western Digital during the twelve (12) month period
+that immediately preceded the event that gave rise to the applicable claim.
+
+
+
+6.3. Limitation of Liability.  NOTWITHSTANDING ANY OTHER PROVISION OF THIS EULA
+BUT SUBJECT IN ALL RESPECTS TO THE AGREEMENT, TO THE MAXIMUM EXTENT PERMITTED
+BY LAW, WESTERN DIGITAL SHALL NOT BE LIABLE FOR INCIDENTAL, SPECIAL, EXEMPLARY,
+CONSEQUENTIAL OR OTHER INDIRECT DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF
+DATA, LOSS OR INTERRUPTION OF USE, LOST PROFITS, SAVINGS OR REVENUES OF ANY
+KIND, WHETHER OR NOT WESTERN DIGITAL HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.  THIS PROVISION SHALL APPLY EVEN IN THE EVENT OF THE FAILURE OF
+AN EXCLUSIVE REMEDY.
+
+
+
+7. Term And Termination.
+
+
+
+7.1. Term.  The term of this EULA is while any Software is under Licensee's
+control or possession, unless terminated earlier (the "License Term").
+
+
+
+7.2. Termination.  Western Digital shall have the right to terminate this EULA
+(a) upon thirty (30) days' prior written notice to Licensee if Licensee has not
+cured any material breach of this EULA by the end of such thirty (30) day
+notice period; (b) if Licensee has not paid an invoice to Western Digital
+regarding such Software sixty (60) days after such invoice is due, at any time
+thereafter upon written notice to Licensee; (c) if the Software is found to
+infringe or misappropriate any Third Party's intellectual property or
+proprietary rights, or becomes subject to an injunction prohibiting its use, or
+Western Digital reasonably believes either of the foregoing conditions is
+likely to occur; or (d) as otherwise provided for in the Agreement.  Upon
+termination of this EULA for any reason, (i) Licensee shall be responsible for
+payment for all purchase orders delivered to Licensee by Western Digital before
+the effective date of termination; and (ii) Licensee shall destroy all copies
+of the Software under Licensee's control or possession.  Further, the licenses
+granted under this EULA for Embedded Software shall automatically terminate
+when Licensee's lawful possession of the applicable Product provided hereunder
+ceases, unless earlier terminated as provided herein.
+
+
+
+7.3. Survival.  The provisions of Sections 1, 2, 3.3, 3.5, 3.6, 4, 5, 6, 7.3,
+and 8 of this EULA shall survive any termination in accordance with their
+terms, in addition to any accrued obligations.
+
+
+
+8. Miscellaneous.
+
+
+
+8.1. Choice of Law; Jurisdiction. The Agreement shall be governed by the laws
+of the State of California, excluding (a) its conflicts of law rules that would
+result in the application of the law of any other jurisdiction; and (b) the
+United Nations Convention for the International Sale of Goods.  The federal and
+state courts located in San Jose, California shall have exclusive jurisdiction
+with respect to any dispute arising under this Agreement.
+
+
+
+8.2. Assignment.  Neither Party may assign its rights and obligations hereunder
+without the prior written consent of the other Party. Notwithstanding the
+foregoing, either Party may assign this EULA to any Affiliate of the other or
+to an acquirer (by purchase, merger or otherwise) of all or substantially all
+of such Party's business or assets relating to this EULA, provided that (i) the
+assignee agrees in writing to be bound by the terms and conditions of this
+EULA, (ii) neither the assignor nor assignee are in default hereunder.  Any
+attempted assignment other than as permitted shall be null and void.
+
+
+
+8.3. Non-Waiver.  No course of dealing or failure of either party to strictly
+enforce any term, right or condition of this Agreement shall be construed as a
+waiver of such term, right or condition.  In the event of any breach or
+threatened breach of Section 3, Licensee agrees that Western Digital will
+suffer irreparable damage for which Western Digital will have no adequate
+remedy at law.  Accordingly, in addition to any other remedy, Western Digital
+shall be entitled to injunctive and other equitable remedies to prevent or
+restrain such breach or threatened breach, without the necessity of proving
+actual damages or posting any bond.
+
+
+
+8.4. Export Regulations. Licensee understands that Western Digital is subject
+to regulation by the U.S. government and its agencies, which prohibit export or
+diversion of certain technical products and information to certain countries
+and individuals. Licensee warrants to Western Digital that Licensee will comply
+in all respects with all export and re-export restrictions applicable to the
+technology and documentation provided hereunder.
+
+
+
+8.5. Restricted Party.  Licensee represents to Western Digital that Licensee is
+not a Restricted Party, which shall be deemed to include any person or entity:
+(1) located in or a national of Cuba, Iran, Libya, North Korea, Sudan, Syria,
+or any other countries that may, from time to time, become subject to U.S.
+export controls for anti-terrorism reasons or with which U.S. persons are
+generally prohibited from engaging in financial transactions; (2) on the U.S.
+Department of Commerce Denied Person's List, Entity List, or Unverified List;
+U.S. Department of the Treasury list of Specially Designated Nationals and
+Blocked Persons; or U.S. Department of State List of Debarred Parties; (3)
+engaged in activities involving nuclear materials or weapons, missile or rocket
+technologies, or proliferation of chemical or biological weapons; or (4)
+affiliated with or a part of any non-U.S. military organization.  Licensee
+shall not sell, resell, loan, disclose, or otherwise transfer any Software,
+Product or Documentation to any Restricted Person without prior, express
+written authorization from Western Digital and the appropriate U.S. Government
+agency.  If Licensee becomes a Restricted Person during the Term, this EULA
+shall automatically terminate and Licensee shall immediately cease all use of
+the Software.
+
+
+
+8.6. United States Government Restricted Rights.  The Software and
+Documentation is provided with restricted rights and qualifies as "commercial
+items" consisting of "commercial computer software" and "computer software
+documentation" as such terms are defined and used at FAR (48 C.F.R.) 2.101 and
+FAR 12.212.  Use, duplication, or disclosure by the government is subject to
+restrictions as set forth in subparagraph (c)(f)(ii) of the Rights in Technical
+Data and Computer Software clause at DFARS 252.227-7013 or subparagraphs (c)
+(1) and (2) of the Commercial Computer Software-Restricted Rights at 48 C.F.R.
+S:52.227-19, as applicable.  For clarity, this Section 9.6 shall also be
+construed to apply to the state or local government counterparts, or the
+foreign counterpart specified as the Territory, as applicable.
+
+
+
+8.7. Order of Precedence; Entire Agreement. To the extent of any conflict among
+this EULA, any additional terms in an agreement signed by Licensee and Western
+Digital, any Western Digital "click-accept" agreement, any terms on a purchase
+order and Western Digital's terms and conditions of sale, the order of
+precedence shall be (a) an agreement signed by Licensee and Western Digital;
+(b) this EULA; (c) a "click-accept" agreement, including any agreement
+regarding the Features to be included as part of the Software; (d) Western
+Digital's terms and conditions of sale; and (e) Western Digital's purchase
+order acceptance (collectively, (a)-(e), after applying the order of
+precedence, the "Agreement"). The terms and conditions contained in the
+Agreement supersede all prior oral or written understandings between the
+Parties and shall constitute the entire agreement between the Parties with
+respect to the subject matter of the Agreement.  This Agreement shall not be
+modified or amended except by a writing signed by Licensee and Western Digital
+Technologies, Inc.
+
+
+
+8.8. Construction; Severability. The headings used in this Agreement are for
+reference purposes only and will not be deemed to limit, expand or in any way
+affect the interpretation of any term or provision hereof.  If any provision or
+part hereof shall be held to be invalid or unenforceable for any reason, then
+the meaning of such provision or part hereof shall be construed so as to render
+it enforceable to the extent feasible.  If no feasible interpretation would
+save such provision or part hereof, it shall be severed herefrom, but without
+in any way affecting the remainder of such provision or any other provision
+contained herein, all of which shall continue in full force and effect unless
+such severance effects such a material change as to render the Agreement
+unreasonable.
+
+
+

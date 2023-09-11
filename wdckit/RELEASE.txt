@@ -1,0 +1,1723 @@
+//
+// Copyright 2019-2023 Western Digital Corporation or its affiliates.
+//
+
+WDCKit version Information
+
+2.17.0.0 Sep 05 2023
+- Bump version for release.
+
+2.16.3.0 Aug 28 2023
+- Getlog will transfer --lsi value for Windows NVMe inbox.
+
+2.16.2.0 Aug 23 2023
+- Revised repop/depop in progress to repopulating/depopulating.
+- Geteyediagram adds --xfer <bytes> (used for client NVMe devices).
+  Defaults to 4096 for NVMeoF or 64Kb for PCI NVMe.
+- Fix manual (security command).
+
+2.16.1.0 Aug 17 2023
+- Getlog for SCSI log 18h will show a label for Negotiatead Logical Link Rate.
+- getperistentevent will summarize a list of events before the remainder of
+  the PEL.
+- Security (BREAKING CHANGE for -c|--change-password) -c now requires --admin
+  to change the TCG Opal password. Prior release was assumed to be Admin
+  password.
+  Now fully supports TCG Enterprise. New options include:
+  -a|--activate             Activates TCG on BDE/TCG firmware HDDs.
+  -i|--inactivate           Inactivates TCG on BDE/TCG firmware HDDs.
+  --erase-locking           Similar concept to revert locking.
+  -L|--list-locking-ranges  List locking ranges.
+  --stack-reset             Reset TCG protocol.
+- Logdump for Enterprise HDDs will show a suggestion to use --all-modes to
+  collect logs for log-based failure analysis.
+- Better output for NVMe PEL log entries for thermal excursions.
+- Format for NVMe will default to ses = 1 (secure erase, was no erase).
+  A warning will be prompted unless --danger-zone is present.
+- Show will report upto Gen5 (22.5) for SAS drives.
+- For Linux, fix full-screen progress bar if TERM set to 'unknown'.
+- Getsmr will retrieve IFPM via SCT and if that fails, by old method.
+- Getsmart adds SMART attributes 236 & 237 (Voltage Monitor 5V/12V).
+- Show fix for incorrect --rdp-status.
+- Getlog for Windows NVMe will read 16KB per ioctl for log id 01h (was 4KB).
+- Getlog for NVMe error log (lid 01h) support for TP4113 (CSI/Opcode).
+- Logdump --allmodes in Linux will also change owner of the _LGU2.bin file.
+- Getsmart for ATA devices will show attribute ID in hex & decimal.
+- Show date/timestamp with milliseconds.
+- Getlog for NVMe log 19h will do a raw hex dump of vendor specific EOM data
+  and fix typo in 'EOM Data Generation Header' text.
+- RDP will report "Current Maximum Number of Depopulated Elements" and
+  "Current Number of Depopulated Elements".
+- IDD fix for ATA word 86, bit 6.
+- Getlog name for ATA log address A6h is 'WD FACT Log'.
+- Getlog for NVMe 2.0 drives will read the directory log with NSID=0 and not
+  the value from --nsid <value>.
+- Show & getsmart fix for SMART return status via Windows ATA interface.
+- TP4119a minor change (Vendor Specific Length -> Eye Data Length).
+- Update to latest Adaptec libraries.
+- Show with --capacity-no-decimal will round off, not truncate.
+- Show/getsmart for ATA drives, when invalid register values returned, will
+  looking for smart status value from log address E0h, offset 214.
+- Rdp will issue a reset after a successful depop/repop and before rescan.
+
+2.16.0.0 Mar 06 2023
+- Bump version for release.
+
+2.15.3.0 Feb 17 2023
+- Show adds --no-multiple-ns to filter out NVMe namespaces from devices that
+  have multiple namespaces.
+- Error code replacement file (Linux/FreeBSD) stored in wdckit folder instead
+  of /usr/bin folder.
+- Show sorting improvement for NVMe fabrics ('/dev/nvme-fabrics').
+- Sign Windows RAID wrapper DLLs.
+
+2.15.2.0 Feb 06 2023
+- Format for HDDs will also do a test unit ready to check if it's complete.
+- RDP fix for -g on ATA drives with 4K sector size.
+- Linux only - wdckit-trace.txt saved not as root.
+- RDP fix typo from get physical element status output.
+- Setfeature fix screen output for ATA drives.
+- RDP adds --retry-limit <0-15> to automatically retry a failed operation.
+- RDP workaround for bad GPES data.
+- Idd raw hex for ATA drives will also show ASCII output.
+- Raw dump will show a space (20h) as a space, not a period.
+- Decode OCP datacenter NVMe SSD logs C3h, C4h & C5h.
+- Show fix for SMR recording technology detection on ATA drives.
+- Update copyright year.
+- Show won't filter out NVMe namespace devices with multiple namespaces (eg
+  /dev/nvme0n1, /dev/nvme0n2).
+- Reset and update with --reset will perform a reset for NVMe devices in an
+  Intel RST RAID configuration.
+- Rdp will check for 'depop/repop completed with error' health states.
+- Fix --trace output when running in interactive CLI mode.
+- Getlog shall decode ATA GPL logs 18h, 42h, 47h, 53h and 61h.
+- Setfeature (NVMe) will not do a get feature since some cdw11 options alter
+  the behavior indirectly.
+- Fix memory leak related to progress bars.
+- Logdump adds --workload-tracking-0, --workload-tracking-1,
+  --workload-tracking-2 and --workload-tracking-3. These will collect modes
+  A0h, A1h, A2h and A3h. Note, --workload-tracking and --workload-tracking-0
+  do the same thing (kept --workload-tracking for backward compatibility).
+- Getsmr adds --xfer <bytes> (used for L-H devices).
+- Zone adds -x <bytes> | --xfer <bytes> for --report-zones option.
+- Zone for for reporting -o zone-cond-not-write-ptr for SCSI drives.
+- Getlog parses ATA log address E0h (SCT Status).
+
+2.15.1.0 Nov 28 2022
+- Getsmr fix for L-W drives that generated an error collecting data.
+- Show fix for SAS current speed.
+- Getlog fix for NVMe log 19h (eye opening monitor).
+
+2.15.0.0 Nov 18 2022
+- Bump version for release.
+
+2.14.4.0 Nov 14 2022
+- Fix getlog decoding bug for ATA log 3h.
+
+2.14.3.0 Nov 11 2022
+- Show state will report "Repopulating" instead of "Not Ready (4h/25h)".
+- Getlog bug fix for ATA with --smarrtlog enabled.
+- Getlog decodes additional fields from ATA log 30h, page 3h.
+
+2.14.2.0 Nov 09 2022
+- Sasphypower bug fix for the reporting of partial/slumber.
+- Ns-create bug fixes and enhancements.
+
+2.14.1.0 Nov 04 2022
+- Rdp, for Linux, will initiate a driver rescan after a depop/repop.
+- Aop fix in check for new capacity.
+- Show recording technology will check for INQ EVPD page B6h.
+- Update for ATA, will not exceed min/max transfer size (if present).
+- Improve check for EULA acceptance via environment variable.
+- Getlog better Eye Opening Monitor output for NVMe log 19h.
+- Getfeature for NVMe adds --payload-size <bytes> to override the default
+  payload size.
+- Added new command: sasphypower, which can enable/disable SAS partial or
+  slumber PHY settings.
+- Getlog decodes NVMe open compute logs C0h, C1h and C2h.
+- Format supports L-W, with limitations (can not change capacity, can not
+  change sector size).
+- Getlog decodes ATA logs: 9h, Ah, Dh, Fh, 12h, 13h, 14h, 15h, 16h, 19h, 21h,
+  22h, 24h & 25h.
+- Format fix for split actuator drives.
+- Getlog ATA log Ch will show LBA in hex.
+- Getlog adds a --timeout <seconds> option (default is 30 seconds).
+- Getlog supports NVMe eye opening monitor log (19h).
+- Getlog decodes ATA SMART log 1h & 2h.
+- Getlog fix decoding of ATA log 3h.
+- Getsmr adds a progress bar.
+- Update default transfer size dropped from 8192 to 4096 (safe for SATA SSDs).
+- Getlog can decode ATA logs 6h (--smartlog only) and 8h.
+- All commands adds a --probe-flag <value>. Can select the Windows ATA
+  passthrough (0) or WINDOWS SAT passthrough (1).
+- Getsmr will default to WINDOWS SAT.
+- Security -g will decode level0 discovery for enterprise SSC (1.00).
+- Security default COMID will use value from level0 discovery instead of
+  7ffeh.
+
+2.14.0.0 Aug 18 2022
+- Bump version for release.
+
+2.13.10.0 Aug 11 2022
+- GetDUI and getlog (for nvme log id 7h) will verify filesize is as expected.
+
+2.13.9.0 Aug 10 2022
+- Updated third party AMD RAID library.
+
+2.13.8.0 Aug 09 2022
+- Format fix detection of ATA drives that support Set Sector Configuration.
+
+2.13.7.0 Aug 08 2022
+- Update fix for AMD RAID.
+
+2.13.6.0 Aug 08 2022
+- Getsmr will continue if a SED locked check fails.
+
+2.13.5.0 Aug 05 2022
+- Setfeature fix for Feature ID 04h.
+
+2.13.4.0 Aug 05 2022
+- Getfeature fix reporting Temperature Threshold (Feature ID 04h).
+- Getsmr bin fix for L-W drives - issue found with non-motherboard HBAs.
+
+2.13.3.0 Aug 04 2022
+- AMD RAID fix.
+- Getlog can parse ATA pending defects log (0Ch).
+
+2.13.2.0 Aug 04 2022
+- Support NVMe drives connected to an AMD Raid.
+- Format fix for checking SSC support for ATA drives.
+- Getfeature adds -v <value> for assigning to dw11, needed by some NVMe
+  feature ids.
+
+2.13.1.0 Aug 03 2022
+- Getpersistentevent, for NVMe 2.0, will check if generation numbers are
+  supported by checking log 0h.
+- Erase timeout overflow fix.
+- Logdump can combine --all-modes with other flags (for example,
+  --workload-tracking).
+- Getlog support for a vendor unique log.
+- Show for drives on Adaptec HBAs will report RAID state and will not report
+  invalid data for dead or rebuilding drives.
+- Show adds --rdp-status which will query RDP state for ATA drives.
+- Add new reset command.
+- Show won't issue SCSI HDD commands for non HDD devices (eg DVD/CD).
+- Getlog for NVMe error log modifications with Windows inbox driver.
+- Idd decoding more ATA fields (some HDD fields were missing).
+- Logdump for split/dual actuator drives can run in parallel.
+
+2.13.0.0 June 17 2022
+- Bump version for release.
+
+2.12.6.0 June 15 2022
+- Geteyediagram tweak for ATA drives in Windows.
+
+2.12.5.0 June 13 2022
+- Show same as release version for JSON 'Alternate Devices'.
+
+2.12.4.0 June 10 2022
+- Revise documentation exclusion options from 'Do not detect ...' to 'Do not
+  interact ...'.
+- Idd more informative descriptions (wdckit help idd -d).
+- Erase --trim restricted to USB-NVMe for Windows.
+- Erase --trim message updated for NVMe.
+
+2.12.3.0 June 08 2022
+- Getlog updates.
+
+2.12.2.0 June 06 2022
+- Handle multiple pathes to the same NVMe device.
+- Logdump for NVMe will not run on both controller & namespace.
+- Getlog adds --lpo (log page offset) for NVMe devices.
+- Add --no-sanitize-status to erase, format, logdump, selftest, show, update
+  & zone for ATA drives, as some systems may not properly handle the command.
+- Logdump fix for workload tracking.
+- Update for split actuator drives will automatically run single threaded.
+- Fix show state for depopulating.
+- Rdp adds --repop-all command to restore elements and rebuild.
+- Erase --trim support for NVMe devices.
+- Trace output log will show NVME.I for NVME IO commands.
+- Add these command line args to filter detection by internal enumeration
+  methods: --no-win-disk, --no-win-ctrl-hdc, --no-win-ctrl-scsi,
+  --no-win-csmi, --no-win-rste, --no-win-ses, --no-linux-scsi,
+  --no-linux-nvme, --no-linux-wdnmve, --no-bsd-cam & --no-bsd-nvme.
+- Erase --progress will show progress instead of a drive not ready error.
+- Show better XML input file error messages.
+- Getlog for SCSI Protocol Specific Port (log page 18h) updates.
+
+2.12.1.0 Apr 08 2022
+- Bump version for release.
+
+2.12.0.0 Apr 08 2022
+- Bump version for release (wasn't released).
+
+2.11.5.0 Apr 08 2022
+- Update NVMe fix for -f <ffu> corrupting the image received by the device.
+
+2.11.4.0  Apr 6 2022
+- Getsmart --namesub <xml> fix.
+
+2.11.3.0  Apr 01 2022
+- Getlog fix for SCSI log pages (last 4 bytes was truncated).
+- Getdui/getlog (telemetry) zipping output supports files > 4.3 GB.
+
+2.11.2.0  Mar 22 2022
+- Set default screen size to 80x25 if unable to obtain the size (for example,
+  remote execution).
+- Logdump --all-modes modification again.
+
+2.11.1.0 Mar 18 2022
+- Logdump --all-modes fix for drives that don't include an E6 directory.
+- Update NVMe log decoding per NVMe 2.0b spec.
+- Show improvement for Adaptec HBAs.
+
+2.11.0.0 Mar 15 2022
+- Bump version for release.
+
+2.10.4.0 Mar 08 2022
+- Show fixed in Windows when --block-device present for MegaRAID SES devices.
+- Logdump for L-H SATA modified SAT flags and will try using older FE/A2 on
+  failure.
+- Getsmr for L-H will look for the E6 list of modes and fetch all modes.
+- Getsmr adds another check to detect if the L-H drive supports E6 logs.
+- Eula command has options to show the EULA exhibit A or the third party
+  notices.
+
+2.10.3.0 Mar 02 2022
+- Fix bug where command name is less than 4 bytes (eg idd).
+- Getlog adds --ignore-directory flag, that when present, will ignore the
+  check if the log exists and try issuing the command. Note, for NVMe devices,
+  the directory exists only in NVMe 2.0 or higher.
+
+2.10.2.0 Feb 24 2022
+- Getdui in Windows with Intel RSTe driver default transfer size changed from
+  0x10000 (65536) to 0x1000 (4096).
+- RDP increase timeout from 30 to 300 seconds.
+- Update with a transfer size of -1 will decrease the transfer size when an OS
+  error is returned.
+- Logdump fix for SN735 (supports additional device IDs - specifically 5019).
+
+2.10.1.0 Feb 10 2022
+- Update --xml <file> bug fix seen in Windows. Also request sense data for
+  Linux. For SAS, don't do an activate unless a deferred download was done.
+- Getdui default data-area for DUI versions 0-3 shall be 3; for version 4 and
+  up, shall be 4.
+- Windows installer branding updated to 'wdckit installation v1.1'.
+- Windows unintaller.exe is now signed.
+- Logdump adds --no-progress. Unspecified progress will behave like before
+  (--simple-progress).
+- Fix getlog for Windows Marvell Nevox NVMe devices.
+- Getsmart --raw will show both SMART READ DATA and THRESHOLD buffers. Also,
+  for cSSD drives, the threshold values will reference the SMART READ DATA
+  attribute, 11th byte and if it is zero, then it will look at the deprecated
+  SMART READ THRESHOLD data.
+- Getsmart --raw will show both SMART READ DATA and THRESHOLD buffers.
+- Show --locked for legacy WD drive bug fix.
+- NVMe vendor unique PE log will show "TLC or QLC" instead of "TLC".
+- Cache ATA identify device data and SCSI VPD supported pages data sooner.
+- Getfeature adds --set-feature-xml <filename> to save an XML file in a format
+  suitable for a setfeature command. Supports for only NVMe feature IDs that
+  require a data buffer.
+- Zns add --data-lifetime <value>, which is used with the --open option.
+- Getlog for lid 0h will report whether telemetry log (lid 7h) supports
+  maximum created data area. For lid 70h, decodes entry flags. Support new
+  Dispersed Namespace log (lid 17h).
+- Idd namespace decodes OPTPERF new definition (from 1 to 2 bits). Decodes
+  Optimal Aggregated Queue Depth and max data transfer size limits for
+  metadata for NVMe 2.1 devices. I/O Cmd Set identify namespace (CNS 05h/CSI
+  00h) adds Storage Tag Check Read Support. Decodes new Dispersed Namespace
+  info.
+- Getfeature will report all LBA Range Types (fid 3h), updated Timestamp
+  (fid Eh), updated Host Behavior Support (fid Fh).
+- Show state improvements (can detect depep, other events).
+- Modify detection for SMR/DHSMR/CMR.
+- RDP update for SCSI.
+
+2.10.0.0 Dec 17 2021
+- Bump version for release.
+
+2.9.6.0  Dec 15 2021
+- RDP bug fixes.
+
+2.9.5.0  Dec 15 2021
+- SetFeatures documentation update.
+- RDP bug fixes.
+
+2.9.4.0  Dec 10 2021
+- Erase --trim changed output message from "SSD" to "device".
+
+2.9.3.0  Dec 09 2021
+- Getpersistentevent will check generation number per NVMe 2.0 spec and retry
+  up to 4 times to read the log.
+- Tweak wdckit-trace.txt legend check.
+
+2.9.2.0  Dec 07 2021
+- Remove bin file if data could not be retrieved.
+
+2.9.1.0  Dec 06 2021
+- Add trace logging for all commands. A new log file (wdckit-trace.txt) will
+  be created when a command fails. To prevent a log, use --no-trace. To always
+  log, use --trace or --trace-with-scan (which includes commands used during
+  scanning for devices).
+- Show for NVMe devices will only obtain sanitize status (log 81h) if sanitize
+  is supported (identify controller 328, bits 0-2).
+- Scsipt update to minimize command overhead.
+- Rdp command will not block for an operation that changes the drive, unless
+  --progress-bar or --simple-progress is specified.
+- Update add --fast to skip non-essential commands to speed up performance.
+- Show --asset updates algorithm to detect SMR vs DHSMR for ATA devices.
+- Rdp capacity fix (multiply capacity by logical sector size).
+- Getlog can decode ATA GPL log address 2Fh (Sector Configuration Log).
+- Decode a few ATA Identify Device fields, mostly related to streaming.
+- Read GPL log 30h without relying on the directory log (00h), which can't be
+  read when an RDP operation is runnning in the background.
+- Add new rdp command for enterprise HDDs that support the storage element
+  depopulation feature set.
+
+2.9.0.0  Nov 17 2021
+- Update version for official release.
+
+2.8.8.0  Nov 11 2021
+- Show --customer-id will show full serial number for L-H devices.
+
+2.8.7.0  Nov 10 2021
+- Update Microsemi/Adaptec RAID libraries to version 3.10.
+
+2.8.6.0  Nov 10 2021
+- Telemetry retrieval of DUI with sections included/excluded will no longer
+  check the reported size in the DUI header section.
+
+2.8.5.0  Nov 09 2021
+- Modify help to show support for non-client devices. Also adds --ssd-sata,
+  --ssd-nvme, --hdd, --essd-sata, -essd-nvme and --ehdd. However, the help
+  screen will only show --ssd-sata, --ssd-nvme and --hdd, but the others are
+  still supported/documented.
+
+2.8.4.0  Nov 08 2021
+- Revised split-actuator design. Treats both LUNs as unique devices.
+
+2.8.3.0  Nov 03 2021
+- Split actuator aware.
+    show: both LUNs shown.
+    format: each LUN can be formatted independently.
+    logdump: collects E6 log for lead and support actuators.
+    update: updates both LUNs
+- Fix getfeature --list for FID 7Eh and 7Fh - query if the device does is not
+  NVMe-MI. --list will use mirror commands when -m|--mirror is set.
+- Erase -x|--exit-failure-mode for ATA devices implemented. Does a sanitize
+  status ext with the clear sanitize operation failure bit set.
+- Checking if drive is ready won't issue clear sanitize errors. Affects ATA
+  drives in erase, format, logdump, selftest, update and zone commands.
+- Getlog for cSSD telemetry logs will append an 'x' to the saved filename
+  when a partial telemetry log is collected.
+- Security fix is showing TCG level 0 discovery raw output.
+- Logdump for NVMe devices connected to Megaraid controllers will default to
+  8192 bytes / command (eg --transfer-size 8192).
+- Getlog for NVMe telemetry logs won't fail is cSSD DUI header size if zero.
+- Add --no-ad and --no-mr to excluded enumerating drives on Adaptec or 
+  Megaraid drivers respectively.
+- Show --block-device in Linux will eliminate all /dev/sg* drives. Duplicate
+  drives will now check for WWN in addition to matching model number and
+  serial number.
+- Getlog will show error message for cSSD telemetry failure.
+
+2.8.2.0  Oct 8 2021
+- Show -a|--asset will show 'HDD (SPA)' for split/dual actuator drives.
+- Update for SPA drives will find and update both LUNs.
+- Logdump -2|--two-ports will include the LUN (_LUN_0_E6_) or (_LUN_1_E6_) in
+  the filename.
+- Update help and user's guide updated too mention Windows inbox doesn't allow
+  commit action or boot partition arguments.
+- Getlog for Windows non-inbox will attempt to read up to 16KiB in one
+  command. Prior version limited this to 4KiB.
+- Getlog will not read extra bytes for these log ids: 6h, Ch, Eh, 15h and BFh.
+- Geteyediagram for L-H fix for --snapshot. Note, snapshot requires data eye
+  version number 0x21 (or presumably higher).
+- If an NVMe error is detected and the driver returns the error info, display
+  the SCT/SC values.
+- Getlog for NVMe log page 0 (new for NVMe 2.0) will include the name of the
+  log id.
+- Update adds -g|--getfwinfo for NVMe devices. It will show current FW slot
+  information log page (similar to getlog --log 3).
+- Logdump support for Split/dual actuator drives. Lead/Support actuator naming
+  will include '_Lead_E6' and '_Support_E6'.
+- Show will decode additional SCSI states related to start/stop state.
+
+2.8.1.0  Sep 30 2021
+- Getdui fix for -g <type> to create text file summary in zip file.
+
+2.8.0.0  Sep 30 2021
+- Update version for official release.
+
+2.7.7.0  Sep 29 2021
+- Getlog for non Windows (IE Linux/FreeBSD) reverts getlog size limit.
+
+2.7.6.0  Sep 29 2021
+- Getlog will limit single commands to 4096 bytes and will read in larger logs
+  with multiple commands.
+
+2.7.5.0  Sep 28 2021
+- Geteyediagram default transfer size changed from 8 pages to 1 page.
+- Getlog default transfer size changed from 64 pages to 1 page.
+
+2.7.4.0  Sep 28 2021
+- Build without UVC (USB Video Class) support.
+- Fix decoding of persistentevent log, when event data exceeded size of byte.
+- Getpersistentevent log fix (introduced in 2.7.2.0).
+- Errors fix command line parsing of args.
+- Getlog fix typo (Error Infomation -> Error Information) in NVMe log id 1.
+
+2.7.3.0  Sep 23 2021
+- Getlog for cSSD can filter telemetry log (log id 7h) or show the DUI header.
+  Adds --show-dui-header, -t|--get-type <type[,max size]> and
+  -e|--exclude-type <type[,size]>.
+- Add an appendix to the user guide.
+- Decoding PEL will abort if type 0h detected.
+
+2.7.2.0  Sep 17 2021
+- Show -a|--asset will show the command set (ATA/ZAC; IOCS/KeyValueCS/ZNS;
+  SBC/ZBC).
+- Erase --table fix for ZAC/ZBC/ZNS drives.
+- Errors adds -r|--replace <error,exit> and -c|--clear to alter the exit code
+  for a given error code.
+- Fix erase -s with multiple drives.
+- Update for NVMe (Windows only) adds a --reset option, which issues a
+  controller reset (helpful for NVMe commit action 1 or 2). This complements
+  the recent Linux addition of this option. Not allowed for RAIDed NVMe
+  devices or Windows 7.
+- Update user guide with XML schema definitions.
+- Linux/FreeBSD: Set default TERM to xterm if necessary, when displaying the
+  full screen progress bar (erase, format, etc.).
+- Format with --danger-zone will reject attempts to format with invalid block
+  sizes.
+- Zns adds -r|--raw-limit <bytes> and --save <path>.
+- Zns --report & --extended-report will summarize the number of zone
+  conditions.
+- Writelog adds --xml-encoder <filename>. The xml paths are:
+    CSSD.SATA.WriteSmartLog
+    CSSD.SATA.WriteGPL
+  and the encoding is similar to other --xml-encoder implementations (see
+  2.5.2.0  Apr 08 2021 release note).
+- Errors shows exit code value, and adds a filter (-e|--exit-code <value>)
+  and -S|--sort-exit-code to show all error codes sorted by exit code.
+- Zone --report-zones will summarize the number of zone conditions.
+- Idd adds -d|--desc to display namespace descriptor data.
+  Adds --cns <byte> to specify a specific CNS data structure to decode, save
+  or dump.
+- Decoding NVMe identify namespace bin file will decode per the latest NVMe
+  spec (currently 2.0).
+- Logdump will not scan all devices, only all NVMe namespace nodes (work-
+  around for Artemis).
+- Do-not-operate will try folder where wdckit is installed if normal location
+  fails.
+- Getlog, getfeature xml decoders will allow an XML attribute ("id"="n") to
+  specify more than one log page in a single xml file (n is decimal).
+  Setfeature xml encoder as well.
+- Idd supports --xml-decoder for SCSI targets (CSSD.SCSI.Inquiry).
+- Security removed --sed-state and --sed-close for L-H devices.
+- Show message when --xml-decoder has no applicable fields to decode.
+- Support Megaraid 94xx series HBAs for NVMe devices. Also updates Megaraid
+  libraries to version 7.16.
+- Decoding NVMe temperatures will show value in kelvin & celsius.
+
+2.7.1.0  Aug 20 2021
+- Show --customer-id will check for invalid data.
+- Security adds --sed-state and --sed-close for L-H devices.
+- Fix writelog and atasecurity screen output (broke in 2.7.0.0).
+- Fix getpersistentevent for Artemis.
+- Fix getlog -m for Artemis.
+- Logdump will no longer check & fail for L-H pre-CCB SATA drives.
+- The message for security PSID revert, without activation will suggest to use
+  --skip-status to revert TCG ownership.
+- Getlog for NVMe telemetry controller initiated logs, shall read only the
+  header when the telemetry controller-initiated data available field is zero.
+  Also added a --force argument to override this.
+- Getlog will not pad zeroes to the log (affects only large sized logs).
+- Getsmart fix for ATA drives and -S|--status for some interfaces.
+- Getlog adds an optional progress bar (--progress-bar|--simple-progress), or
+  automatically show a simple progress if the log size is over 64 MiB.
+- Getlog adds -x|--xfer <units> to specify the number of bytes to transfer
+  per command for NVMe devices. 1 unit equals 4 KiB.
+- Getlog fix for Windows (found in telemetry).
+- Getlog fix NVMe log id 0 decoding.
+- Add retries when saving data.
+
+2.7.0.0  Aug 03 2021
+- Update version for official release.
+
+2.6.7.0  Jul 30 2021
+- Fix DUT assignments for Megaraid devices.
+
+2.6.6.0  Jul 28 2021
+- Aop, erase & format will properly detect boot device in Linux.
+
+2.6.5.0  Jul 28 2021
+- Format for ATA drives will not do ATA set sector configuration unless the
+  --fastformat flag is specified.
+- Another fix for Windows RST driver decection of NVMe devices in a RAID.
+- All raw dumps header will start at 0, never 1.
+
+2.6.4.0  Jul 26 2021
+- Another fix for Windows RST driver decection of NVMe devices in a RAID.
+
+2.6.3.0  Jul 23 2021
+- Fix Windows RST driver decection of NVMe devices in a RAID.
+
+2.6.2.0  Jul 21 2021
+- NVME 2.0 additions.
+- Add --raw-limit <bytes> to commands that include -r|--raw.
+- Getfeature -S 3 on inbox will pass in a buffer.
+- Power now supports Artemis.
+- Getfeature --xml-decoder supports decoding a 32-bit value for feature IDs
+  that do not require a data payload.
+- Getfeature --list fix (provides a payload buffer).
+- Getsmr adds -a|--collect-all flag. RTT data will be saved only when it is
+  not empty or if the -a|--collect-all flag is present.
+- Fix DUT assignments for Azeroth (NVMe RAID enclosure).
+- Getsmr will collect additional info.
+- Minor line spacing changes in decoding of data (now more consistent across
+  commands).
+- Getsmart XML/Json output for SCSI drives will include the section source.
+- Getlog XML/Json output fixed/improved for:
+    NVMe error log (lid 1h) when it's empty
+    NVMe persistent event log (lid Dh)
+    ATA directory log (log address 0h)
+    Extended Comprehensive SMART error log (log address 3h)
+    NCQ error log (log address 10h)
+    SCSI self test results (log page 10h)
+    SCSI informational exceptions (log page 2Fh)
+    SCSI log page 37h
+- Idd -t for ATA drives fix.
+- Idd for ATA drives will decode first word.
+- Idd XML/Json output fixed/improved for:
+    SCSI Ports (EVPD page 88h)
+    Protocol Specific Logical Unit Information (EVPD page 90h)
+    Protocol Specific Port Information (EVPD page 91h)
+- Show XML/Json output fixed for --standards.
+- Update for NVMe (Linux only) adds a --reset option, which issues a
+  controller reset (helpful for NVMe commit action 1 or 2).
+
+2.6.1.1  Jun 21 2021
+- Update version.
+- Logdump for Hgst will use C3h commands instead of FEh commands.
+- Handle bad timestamps (for example, within Persistent Event logs).
+- Updates for NVMe 2.0 spec (decoding, more logs etc.).
+- Support Megaraid in ARM Linux package.
+- Update Megaraid libraries (RAID version only).
+- Add NVMe-MI to idd and getfeature.
+
+2.6.0.0  Jun 01 2021
+- Update version for official release.
+
+2.5.12.0  May 28 2021
+- Logdump for Artemis will check if device is locked and return a new status
+  code (-313) if the log can not be retrieved.
+
+2.5.11.0  May 26 2021
+- Fix crash on FreeBSD (related to sorting devices).
+- Revise model number strings for Artemis.
+
+2.5.10.0  May 24 2021
+- Add another device ID for Artemis (0x501E).
+- Idd -n in Linux bug fix in reporting device name.
+
+2.5.9.0  May 18 2021
+- Erase bug fix when no options given.
+- Format restrction added for Windows iRST.
+- Security PSID revert fix for -t|--timewait <seconds> and increase default
+  waiting time from 10 to 30 seconds.
+- Selftest will detect Windows inbox ReturnStatus ==
+  STORAGE_PROTOCOL_STATUS_THROTTLED_REQUEST and return new error code -504.
+- Artemis library update to version 1.0.3.0.
+
+2.5.8.0  May 14 2021
+- Logdump -2|--two-ports fix for ATA drives in Linux.
+- Fix decoding of NVMe log 0xFB, version 3.
+- Windows uninstaller will delete DLLs.
+- Vuc opcode F1h will use a 4KiB data out buffer.
+
+2.5.7.0  May 13 2021
+- Logdump changed -1|--one-copy -2|--two-ports to collect E6 logs from two SAS
+  ports. Useful with --serial <sn> or --model <mn>.
+
+2.5.6.0  May 13 2021
+- Getlog support for Artemis mirror command.
+- Linux version will change output file's ownership to user id (not root).
+
+2.5.5.0  May 12 2021
+- Revise EULAs.
+- Logdump for Artemis will append ".bin" to each file in the output zip file.
+- Logdump for Linux/Artemis will no longer require specifying the nvme
+  namespace device.
+- Logdump will collect E6 logs from both SAS ports. Added -1|--one-copy to
+  limit to one copy only.
+- Make drive ready (SATA/SAS) for: erase, format, logdump, selftest, update
+  and zone commands.
+- Help -o allows f or freebsd.
+- Getdui adds -e <type>[,<max size>].
+- Decode NVMe log 0xFB version 0.
+- Add logdump to help for cSSD NVMe.
+
+2.5.4.0  Apr 28 2021
+- Logdump will support Artemis.
+- Getsmr will collect additional info.
+
+2.5.3.0  Apr 15 2021
+- Update for NVMe devices will honor identify FWUG value.
+- Idd add -v|--vpd <page> to read/decode many SCSI inquiry VPD pages.
+
+2.5.2.0  Apr 08 2021
+- Getfeature adds --xml-decoder <filename> (XML path is CSSD.NVME.GetFeature)
+  and the format is found below (2.2.3.0).
+- Setfeature adds --xml-encoder <filename>. The payload data sent to the NVMe
+  device can be populated via XML instructions. Schema:
+  <CSSD>
+    <FileFormatMajor>1</FileFormatMajor>
+    <FileFormatMinor>0</FileFormatMinor>
+    <NVME>
+      <SetFeature>
+        <Size>number</Size>             // size of payload buffer
+        <Endian>little|big</Endian>     // optional (default is little)
+        <Field>                         // Multiple fields allowed
+          <Offset>number</Offset>
+          <Length>number</Length>       // max of 8 for a number
+          <BitStart>number</BitStart>   // optional
+          <BitEnd>number</BitEnd>       // optional
+          <Name>string</Name>
+          <DataType>Decimal|Hex|String</DataType>
+          <Value>number|string</Value>  // hex without 0x or h
+        </Field>
+      </SetFeature>
+    </NVME>
+  </CSSD>
+
+2.5.1.0  Apr 05 2021
+- Geteyediagram --bit-depth changed from signed 32-bit to unsigned 64-bit
+  value.
+- Getsmr will collect more data with the option to name the output basename
+  (default will using the serial number) and strip personally identifiable
+  information.
+- Logdump timeout increased to 90 seconds (from 30) and adds more modes for
+  L-H drives: default, metadata, snr-ow, servo, erp, cpu, rw-incr, excursion
+  and latency.
+
+2.5.0.0  Mar 29 2021
+- Update version for official release.
+
+2.4.12.0  Mar 22 2021
+- Getdui --show-header fix.
+
+2.4.11.0  Mar 19 2021
+- Improve getpersistentevent and sethctmtemps for Windows.
+
+2.4.10.0  Mar 18 2021
+- Another attempt to address Win 20H1 and newer bug reading logs/DUI.
+
+2.4.9.0  Mar 17 2021
+- Getlog fix for NVMe logs > 64 KB.
+- Getdui -g <type> change for Windows (read a minimum of 4KB, not 512 bytes).
+
+2.4.8.0  Mar 16 2021
+- Decode additional SCSI log sense pages.
+
+2.4.7.0  Mar 16 2021
+- Bug fix for getlog when log size is > 64KB.
+
+2.4.6.0  Mar 15 2021
+- Bug fix for getlog when log size is > 64KB.
+- Decode additional SCSI log sense pages.
+- Getfeature -l enhancement for NVMe devices.
+
+2.4.5.0  Mar 11 2021
+- Getdui -g <type> will not append skipped sections after the final section.
+- Getfeature for NVMe with -S|--select 3 (supported capabilities) will decode
+  the output and show if the feature is saveable, per-namespace and/or
+  changeable.
+- Getsmart can accept a binary file input. Better, more consistent output in
+  json/xml output.
+
+2.4.4.0  Mar 09 2021
+- Geteyediagram fix for --snapshot.
+
+2.4.3.0  Mar 09 2021
+- Geteyediagram adds --snapshot to read snapshot data for L-H NVMe devices.
+- Show --locked will attempt to show SED state. Note, in Linux, for ATA,
+  /sys/module/libata/parameter/allow_tpm must be set to 1.
+- Decode many SCSI HDD log sense page codes/subpage codes (getlog).
+
+2.4.2.0  Mar 02 2021
+- Getlog for NVMe will read the log in 4KB segments if the size is > 64 KB.
+  The prior version will try to read it in one command and then try in 4KB
+  segments if the one command fails.
+- Getsmr will collect additional info.
+- Getdui with -g <type> will concatenate adjacent sections.
+- Getdui with -g <type> will no longer automatically add type 2 and 14/15.
+
+2.4.1.0  Feb 23 2021
+- Logdump --all-modes will include the extended usage log (LGU2) which was
+  accidently left out in version 2.3.4.0. Also Bump log sense (LGSN) by an
+  extra 4 bytes when version is >= 34.
+- Getdui fix for DUI log version 4.
+- Unofficial build will show branch name/build number.
+- Getdui allows -g <type[,<size>]> to limit the length of the section type.
+- Update adds --pause-apst flag to disable/enable NVMe APST feature.
+- Getlog adds --rae flag for NVMe. Sets the retain async event bit.
+- Able to detect more causes for SCSI drives not ready (format failure etc.).
+- Sethctmtemps adds -d|--disable flag to disable HCTM.
+
+2.4.0.0  Feb 19 2021
+- Update version for official release.
+
+2.3.18.0  Feb 17 2021
+- Getdui removed -m|--max-section-size <bytes>, -t|--exclude-type <type> and
+  -i|--exclude-index <id>. Allow -g|--get-type <type> to shrink a DUI binary
+  file. Always read DUI sections on 512 byte boundaries. When extracting by
+  section type, section 14 or 15 will be included if and only if the size is
+  greater than or equal 1 MB.
+
+2.3.17.0  Feb 12 2021
+- Getdui fix to zip files.
+
+2.3.16.0  Feb 11 2021
+- Getdui with -g <type> find last section by index, not type.
+
+2.3.15.0  Feb 10 2021
+- Getdui with -g <type> fix with unexpected 200h zeroed section.
+
+2.3.14.0  Feb 10 2021
+- Getdui with -g <type> will report that section type 0 was retrieved.
+
+2.3.13.1  Feb 05 2021
+- Build Linux RAID on Jenkins build machine 'Ubuntu 16.04'.
+
+2.3.13.0  Feb 05 2021
+- Format revise check for SCSI long LBA support and perform up to 3 retries.
+
+2.3.12.0  Feb 03 2021
+- Format for NVMe devices will honor -b|--blocksize.
+
+2.3.11.0  Feb 03 2021
+- Add some NVMe-oF support. Show will show NVMe-oF instead of NVMe. Logdump
+  will use a transfer size of 4096 for the header, and 8192 for the remainder
+  of the log (may be slow) and show progress. Idd will show NVMe-oF in offset
+  range 1792-1805.
+- Fix NVMe / WinPE / inbox restriction.
+
+2.3.10.0  Feb 02 2021
+- Format another update for payload length < 4 bytes.
+
+2.3.9.0  Feb 01 2021
+- Format update for L-H ATA drives (uses 8 byte payload instead of 4 bytes).
+- Getlog decoding of ATA log pages 4h (DSL) and 30h (ID log) adds offsets.
+- Format for ATA drives, when set sector configuration fails on a L-H ATA
+  drive, then a SCSI format will be sent.
+
+2.3.8.0  Jan 28 2021
+- Add zone, for ZAC/ZBC (v1) commands. Performs zone open/finish/close/reset
+  write pointer and report zones.
+
+2.3.7.0  Jan 26 2021
+- Getdui with -g <type> will include type 2, 14 & 15. No dummy data will be
+  appended after the last section type.
+- getsmr will collect bin files for Hgst & SanDisk.
+- getsmr will collect additional info.
+
+2.3.6.0  Jan 22 2021
+- Update will use a 90 second timeout.
+- Fix ATA log page 30h decoding bug.
+- Revert Jenkins build machine (Linux) from Ubuntu 16.04 x64 to gcc5.
+- Getlog for ATA log page 30h will decode Zoned Device Information.
+
+2.3.5.0  Jan 20 2021
+- Added -u|--uuid-index <value> to getlog (for NVMe devices).
+- Added -g|--get-type <type> to extract this type (can be used many times).
+
+2.3.4.0  Jan 20 2021
+- Logdump --all-modes will read the E6 directory mode (E0h) for all modes.
+- Possible fix for randomness in show to detect logical/physical SCSI devices.
+- Logdump adds --nand-smart to collect mode 1Eh.
+- Vuc improvements in screen output.
+
+2.3.3.0  Jan 13 2021
+- Vuc data transfer buffer will be page aligned.
+- Fix selftest <ata device> -e -r output.
+- Update will not allow -f <filename> with -s or -c, nor allow -x with -a.
+- Prefer Intel RSTe naming 'rstepX.Y.Z' over the generic 'nvmeX' naming (added
+  recently for devices without a namespace).
+- Show restrictions in documentation and help.
+- Fix ZNS identify namespace reporting of Maximum Active Resources and Maximum
+  Open Resources.
+- Update copyright year.
+
+2.3.2.0  Dec 29 2020
+- Switch Jenkins build machine (Linux) from gcc5 to Ubuntu 16.04 x64.
+- Fix Adaptec RAID support. Logdump transfer size for SAS/SATA will default to
+  32 KB instead of 64 KB.
+- Erase (via sanitize), format and namespace commands (ns-attach, ns-create,
+  ns-delete & ns-detach) for NVMe devices in Windows/inbox will generate a
+  new error -22 (This task is only valid in Windows PE and inbox driver.)
+  per Microsoft's documentation.
+- Change error code for non-NVMe devices in getdui, getpersistentevent and
+  getpe from -14 (Invalid device) to -57 (Device is not an NVMe device).  
+- Security -g will show full TCG Level0 discovery info.
+
+2.3.1.0  Dec 17 2020
+- Format will not use the ATA Set Sector Configuration command when the
+  -n|--numblocks arg is present.
+- Update add -b <0|1>,  --bpid <0|1> for NVMe devices.
+
+2.3.0.0  Dec 16 2020
+- Update version for official release.
+
+2.2.11.0  Dec 16 2020
+- Fix decoding log C2h as JSON/XML.
+- Getlog --boot-partition <log id> accepts from 10h to FFh.
+
+2.2.10.0  Dec 14 2020
+- Getdui shall show a message for non SanDisk or non NVMe devices.
+- Crash fix for idd namespace list (-n -l).
+- Support nvmeX devices in Windows (controller without namespace).
+
+2.2.9.0  Dec 11 2020
+- Getdui output message updates.
+
+2.2.8.0  Dec 11 2020
+- Getdui revised how excluded sections are reported. If nothing was excluded,
+  the zip file will not be created and a warning shall be shown instead.
+
+2.2.7.0  Dec 08 2020
+- Idd and getlog supports JSON/XML etc. output for the supplemental decoding.
+- Format an NVMe namespace will fetch the nsid from the driver response.
+
+2.2.6.0  Dec 08 2020
+- Fix boot device detection bug.
+- Ignore invalid offset/lengths from an XML decoder file.
+- Format an NVMe namespace will fetch the nsid from the device name.
+
+2.2.5.0  Dec 07 2020
+- Fix raid seg-fault in show command.
+- Getdui will insert 'SKIP' to the start of every section that was zereod out.
+
+2.2.4.0  Dec 03 2020
+- Fix crash in getdui exclusion code.
+
+2.2.3.0  Dec 03 2020
+- Getlog adds --output <text|json|xml|csv|csv-no-header>.
+- Getlog & idd supports decoding via --xml-decoder. The schema is as follows:
+    CSSD.NVME.GetLogPage
+    CSSD.SATA.ReadGPL
+    CSSD.SATA.ReadSmartLog
+    CSSD.SCSI.LogSense
+    CSSD.NVME.IdentifyController
+    CSSD.NVME.IdentifyNamespace
+    CSSD.SATA.IdentifyDevice
+  The <Field></Field> must contain these:
+    <Offset>number</Offset>
+    <Length>number</Length.
+    <Name>string</Name>
+    <DataType>Decimal/Hex/String/ByteSwapString</DataType>
+    <BitStart>number</BitStart>
+    <BitEnd>number</BitEnd>
+    <Data><Value>number</Value><Description>string</Description></Data>
+- Getlog adds a (temporary) --boot-partition <log id> command line argument
+  to specity the log identifier for the upcoming boot partition log and it
+  will decode it (or dump as raw or save as a binary file).
+- idd can use a bin file as input. If the size is 512, it's assumed to be from
+  an ATA device. If the size is 4096, it's assumed to be from an NVMe device
+  (use -c, -n, -l --zns to specify source of bin file). If the file is not 512
+  and not 4096 but more than 4 bytes, it's assumed to be from a SCSI standard
+  inquiry command.
+- Getdui with section exclusion will be renames *_duix_* and a simple text
+  file will be added to the zip file.
+
+2.2.2.0  Nov 30 2020
+- Getdui can use a bin file as input.
+- Fixed NVMe error information decoding of command ID (16-bit field instead
+  of an 8 bit field).
+- Files created in linux will have ownership assigned to the non-superuser.
+
+2.2.1.0  Nov 20 2020
+- Getdui adds following to exclude a section and create a zip file:
+    -m <bytes>,  --max-section-size <bytes>
+    -t <type>,  --exclude-type <type>  (accepted multiple times)
+    -i <id>,  --exclude-index <id>  (accepted multiple times)
+  To assist with this, also adds -S,  --show-header to show the section index,
+  offset, typem, data area and size. It will not read beyond the header.
+- Show --block-device tweak to detect possible non-block devices on RAID HBAs.
+- Allow formatting an NVMe namespace if the device allows it.
+- When NVMe selftest is not running, a progress will show status of the last
+  self test command.
+- Decoding NVMe telemetry logs will crop raw hex dump output after 1M bytes.
+- Fix logdump for NVMe/E6h devices.
+
+2.2.0.0  Nov 16 2020
+- Update version for official release.
+
+2.1.11.0  Nov 13 2020
+- Format will restrict Linux devices to the controller (/dev/nvmeX) and block
+  namespaces (/dev/nvmeXnY).
+
+2.1.10.0  Nov 12 2020
+- Add error code -210 'Mirror command is not applicable'.
+- Bug fix when a mirror command is used on a non SanDisk NVMe device.
+
+2.1.9.0  Nov 12 2020
+- Show NVMe link info for CentOS 7.
+- Fix power command error reporting.
+- Linux mkdir will attempt to change owner to non-root user and grant
+  additional access rights (rwxrwxr-x).
+- CentOS 8.2 bug fix in show (detection of boot device issue).
+
+2.1.8.0  Nov 11 2020
+- Geteyediagram timeout set to 6 hours.
+- Improve NVMe error information log (lid 1h) decoding - show some values as
+  n/a or as hexadecimal.
+
+2.1.7.0  Nov 10 2020
+- Fix format timeout value.
+
+2.1.6.0  Nov 10 2020
+- Getlog will check if --data-area is used with only NVMe telemetry logs (lid
+  7 or 8). Also fix error message for an invalid data area value.
+- In EULA, replace UTF-8 single/double quotes with plain single/double quotes.
+
+2.1.5.0  Nov 09 2020
+- Validate getlog --ata|--nvme|--scsi applies only to a file.
+- Show NVMe message, sct and sc values when an NVMe command fails.
+- NVMe idd will display vendor unique info based on FW version.
+- Fix show bug seen with Linux NVMe link speed/capability data.
+
+2.1.4.0  Nov 06 2020
+- Bug fix for detecting errors for nvme commands (Linux).
+- Bug fix for getdui with an invalid data area value.
+- Getsmr will optionally collect more information.
+- Windows fix for EULA when installed in a path with spaces.
+
+2.1.3.0  Nov 03 2020
+- NVMe identify controller and identify namespace shall show byte/bit offsets.
+- Rename this message from "Operation is not allowed" to "Operation is not
+  allowed due to OS and/or driver".
+- For Windows NVMe: Fetch PCI link speed info via another method if primary
+  method fails.
+- For SCSI devices, idd will decode the standard inquiry data.
+- Add error code -8: Admin privilege required - returns if wdckit is not run
+  with administrative/superuser rights.
+- Selftest with a progress bar shall assume as if the -b|--blocked arg is also
+  given.
+- If log file can't be created in the current directory, it will be created
+  where the executable resides.
+- Decode PEL thermal excursion threshold data.
+
+2.1.2.0  Oct 14 2020
+- Fix ZNS report zones issues.
+- Fix decoding of vendor specific PEL entry counter.
+- Fix decoding of the NVMe PEL event type 5.
+- Getlog adds --data-area <1|2|3|4> that's only used for telemetry logs (7/8).
+  Also decodes new data area 4 fields in decoding identify controller and
+  the telemetry log pages.
+- Fix NVMe set features commands (setfeature, sethctmtemps and
+  setthrottlingtemp) in Windows for inbox driver.
+- Show --block-device fix for SCSI drives sometimes not being shown.
+- Merge functionality from atalog and readlog to getlog.
+  Note, following commands are now under the getlog command:
+    getasymnsaccess is now under getlog -l ch
+    getchangednslist is now under getlog -l 4h
+    getcmdeffectslog is now under getlog -l 5h
+    getdithdr  is now under getlog -l 7h
+    getdstlog is now under getlog -l 2h
+    getendurancegroup is now under getlog -l 9h
+    getendurancegroupaggregate is now under getlog -l fh
+    geterrorinfo is now under getlog -l 1h
+    getfwslot is now under getlog -l 3h
+    gethithdr is now under getlog -l 8h
+    getlbastatus is now under getlog -l eh
+    getpredlatencygroup is now under getlog -l bh
+    getpredlatencypernvmset is now under getlog -l ah
+    getreservenotice is now under getlog -l 80h
+    getsanitizestatus  is now under getlog -l 81h
+- Fix RPM uninstall instructions.
+- Set timeout to 300 seconds for geteyediagram. Also command shall fail if the
+  payload is empty.
+- Return 'Operation is not supported' for Windows NVMe inbox driver and idd
+  --zns commands.
+- getsmr will collect more info.
+- Handle idd -n where the namespace GUID is all zeroes - if and only if there
+  is one partition with the same namespace GUID value (all zeroes).
+- Get NVMe telemetry logs will read full log.
+- Fix eula command in Windows when run from a different directory.
+- Fix crash in erase command with an invalid device.
+- Save DUI as data is fetched from the device (instead of after entire log has
+  been fetched).
+
+2.1.1.0  Oct 09 2020
+- Fix Windows hardware RAID detection (SAS/SATA).
+
+2.1.0.0  Sep 29 2020
+- Bump version for release.
+
+2.0.14.0  Sep 28 2020
+- Idd will not show a misleading command successful in Windows for NVMe
+  devices if identify namespace fails.
+- Modify show --geometry output.
+
+2.0.13.0  Sep 25 2020
+- Modify show --geometry output.
+
+2.0.12.0  Sep 24 2020
+- Allow idd --zns options to accept a device with namespace (/dev/nvme0n1).
+- Show --geometry will not report block size and Max LBA in Windows.
+  In Linux, it will not report with an NVMe controler (/dev/nvme0), but it
+  shall be shown for an NVMe namespace (/dev/nvme0n1).
+- Improve decoding of ZNS identify namespace (mor/mar 'No limit' if the value
+  is 0xFFFFFFFF and reset/finish recommended limit 'Not reported' if the value
+  is 0).
+
+2.0.11.0  Sep 23 2020
+- Fix logdump for L-W drives.
+
+2.0.10.0  Sep 23 2020
+- Don't retrieve E6h log if size in log header is 0.
+
+2.0.9.0  Sep 23 2020
+- Add --csi to ns-create command.
+
+2.0.8.0  Sep 23 2020
+- Fix EULA line-break locations.
+- Add IDD examples for ZNS.
+
+2.0.7.0  Sep 21 2020
+- Add getchangedzonelist command. Decodes log id 0xBF.
+
+2.0.6.0  Sep 17 2020
+- For ZNS commands in Linux, the device MUST use the namespace path
+  (eg /dev/nvme0n1).
+
+2.0.5.0  Sep 16 2020
+- Fix infinite loop parsing binary file for log 0xC2.
+
+2.0.4.0  Sep 15 2020
+- Added -G|--gpl-dma to atalog, readlog and writelog. This will read/write
+  GPL logs via read/write log dma ext command. Note, DMA protocol may not
+  always work in all environments.
+- Limit C2h log decoding.
+- Erase/remove RPM/DEB package bug fix (introduced with EULA license).
+
+2.0.3.0  Sep 14 2020
+- Add -b|--block-count to atalog and readlog. This specifies the maximum
+  number of blocks to transfer per command. Defaults to 1.
+  NOTE: Some OSes and/or drivers may not allow a very large value.
+
+2.0.2.0  Sep 10 2020
+- All versions except for Windows installer will enforce a EULA (the Windows
+  installer will display the EULA and ask for acceptance). The first time 
+  wdckit is executed, the EULA will be displayed and the user needs to 
+  accept it. Once accepted, this will not be displayed on that system. An
+  environment variable may also be pre-defined: WDC_LICENSE_ACCEPTED=1.
+- Decode eSSD log page C2h.
+- Update will accept 0 for slot value.
+- Linux boot device will also check /home partition in addition to /root.
+- Decode log page 0xFB.
+- Fix setfeature for NVMe bug.
+- Added command zns: supports close, finish, open, reset, offline, set zone
+  descriptor extension, report and extended report commands.
+- Idd adds --zns to decode ZNS identify controller data, ZNS identify 
+  namespace data and ZNS identify active namespace list.
+- Decodes ZNS changed zoned list log page (BFh).
+- Supports Phison OUI (6479A7h) when the model and serial numbers begins
+  with 'WD'.
+- Decode more fields from NVMe get log page and get features.
+
+2.0.1.0  Aug 27 2020
+- Timestamps based on Epoch (1970-01-01 00:00:00 UTC) will be reported as
+  YYYY-MM-DD HH:MM:SS.MMM GMT (ms).
+- Persistent event log will show a summary of event type and counts.
+- Show will report whether SMART is not supported or disabled for ATA devices.
+- Fix reading NVMe logs > 256KB in size (numd > 0xFFFF).
+- NVMe getpersistentevent will not round up the size of the log.
+- NVMe geteyediagram tweak to get log page command.
+- show RAID state will also check megaraid:x.x.x sibling to get value.
+- add -m|--mirror to setfeature and sethctmtemps. These will no longer auto-
+  matically use the mirror option for Windows inbox driver.
+- Security -g will show sanitize capabilities.
+- Fix update via --model or --serial.
+- Add logdump --inc-min-io (0x83), --workload-tracking (0xA0), --mode <value>
+  and -t|--transfer-size <bytes> args.
+- Add show --capacity-no-decimal to output capacity same as nvmekit.
+- Add security --msid-revert and --msid-activate.
+- For Megaraid, read GPL logs (for example 30h) 1 block at time (was 32).
+
+2.0.0.0  Jul 22 2020
+- Bump version for release.
+1.5.14.0  Jul 21 2020
+- Security PSID revert implemented for L-H CCB7 with 20 byte PSID values.
+
+1.5.13.0  Jul 21 2020
+- Security PSID revert will allow only 32 byte PSID values (removed support
+  for L-H CCB7 drives).
+
+1.5.12.0  Jul 20 2020
+- Properply build Adaptec and Megaraid libraries.
+- Fix logdump --model already defined.
+
+1.5.11.0  Jul 16 2020
+- Improve get security for SCSI (first check if security is supported).
+- Show ATA state changed from unknown to unretrievable.
+- Don't allow non WDC drives in erase, format, getfeature, getsmart and power.
+
+1.5.10.0  Jul 14 2020
+- Allow non WDC drives in erase, format, getfeature, getsmart and power.
+- Validate security PSID revert length is not longer than 32 bytes (instead
+  of exactly 32 bytes).
+
+1.5.9.0  Jul 13 2020
+- Fix getfeatures VU commands for Windows RST NVMe driver.
+- Show state for NVMe will detect a sanitize in progress.
+
+1.5.8.0  Jul 10 2020
+- Support NSID in VU get/set features.
+
+1.5.7.0  Jul 10 2020
+- Fix handling of a filename instead of a device name.
+
+1.5.6.0  Jul 09 2020
+- Windows detects Intel RST VMD NVMe driver.
+
+1.5.5.0  Jul 09 2020
+- Documentation updates.
+
+1.5.4.0  Jul 06 2020
+- Changed some Windows status from 'operation not allowed' to 'device
+  failure'.
+- Getlog and related nvme get* will first try to read entire log in one pass,
+  and retry at 4096 bytes if that failed.
+- Arbitration Burst output for 111b will show 'No limit' instead of 128.
+- Security -g will show identify device security info for ATA devices.
+- Format will not required -b|--blocksize for NVMe devices. Also added
+  --timeout-seconds <seconds> optional argument.
+
+1.5.3.0  Jun 30 2020
+- Getfeature will restrict -S|--select to 0-7 and it will report current,
+  default, saved, supported capacilities or reserved in output.
+- Getlog will transfer the data in 4096 byte segments.
+
+1.5.2.0  Jun 29 2020
+- Restriction all commands except show and idd to WDC devices.
+- Add -s|--status-field to decode NVMe status field (SF).
+- Show state changed unknown to unretrievable.
+- Security psid revert adds --skip-status.
+- Show for SCSI devices, state may show Sanitizing, formatting or securing.
+- Sanitize overwrite improvements, similar to Hugo.
+- Show -L|--locked will show lock reason, similar to Hugo.
+- Show --customer-id will show the customer ID and Hgst internal firmware
+  version, similar to Hugo.
+- Update adds a -r|--rescan-control, similar to Hugo.
+- Show NVMe power state info in idd command. Similar to Hugo powerstate.
+- Erase -t|--trim for SCSI will use the unmap command, if supported.
+- Erase adds --table to erase the partition table, similar to Hugo.
+- Erase adds --show-support to list which erase operations are supported.
+- Add --model and --serial to all commands to filter targets by the model
+  number of serial number.
+
+1.5.1.0  Jun 15 2020
+- Fix capacity bug for SATA if drive is not 512 bytes / sector.
+- Update --xml and -v|--validate will do a pre-check.
+- Show state will work for SAT pass through where LBA regs are low/mid/high or
+  high/mid/low.
+- Update --xml will not attempt an ATA activate unless download mode Eh was
+  used. Add --no-progress, too.
+- Fix show -t segFault. Also improved sorting of devices for other options.
+- Allow vuc command to send/receive data.
+
+1.5.0.0  Jun 12 2020
+- Bump version for release.
+
+1.4.18.0
+- Getting unique logs (1.4.11.0) minimum transfer size increased from 4096
+  to 16384 bytes.
+
+1.4.17.0
+- IDD output in json/xml will be similar to version 1.4.0.0.
+
+1.4.16.0
+- Fix SATA DHSMR detection.
+
+1.4.15.0 June 04 2020
+- Fix bug introduced in 1.4.13.0 (close/re-open file handle), seen in erase,
+  selftest and format.
+
+1.4.14.0 June 03 2020
+- Linux statically links with stdc++  and gcc libraries.
+- Windows installer will include 0-length wdckit.txt and (RAID only)
+  arcerror.txt and arcconfig.xml.
+
+1.4.13.0 Jun 02 2020
+- In Linux, if 100 or more devices are present, wdckit will close/re-open 
+  file handles to the devices.
+
+1.4.12.0 May 26 2020
+- Erase -x for ATA drives will report operation is not allowed.
+
+1.4.11.0 May 26 2020
+- Add getasymnsaccess (NVMe log 0Ch).
+- Add getchangednslist (NVMe log 04h).
+- Add getcmdeffectslog (NVMe log 05h).
+- Add getdstlog (NVMe log 06h).
+- Add getendurancegroup (NVMe log 09h).
+- Add getendurancegroupaggregate (NVMe log 0Fh).
+- Add geterrorinfo (NVMe log 01h).
+- Add getfwslot (NVMe log 03h).
+- Add getlbastatus (NVMe log 0Eh).
+- Add getpredlatencygroup (NVMe log 0Bh).
+- Add getpredlatencypernvmset (NVMe log 0Ah).
+- Add getreservenotice (NVMe log 80h).
+- Add getsanitizestatus (NVMe log 81h).
+- Add getdithdr (NVMe log 08h).
+- Add gethithdr (NVMe log 07h).
+- Getlog will decode more logs (same as above).
+- Getlog has a new option: -S|--size <bytes>.
+- Getpersistentevent removes -p|--parse (decodes header) and -e|--events
+  (decodes events). Both will be decoded.
+
+1.4.10.0 May 21 2020
+- GetDUI version 4 tweak (32-bit field sizes instead of 64-bit field sizes).
+
+1.4.9.0 May 21 2020
+- Format for ATA devices will use set sector configuration, if supported.
+- Avoid crash in show when reading ATA GPL log address 30h.
+- GetDUI support version 3 and higher.
+
+1.4.8.0 May 19 2020
+- Statically link Linux version with ncurses and edit libraries, if and only
+  if the build system contains the necessary static libraries (edit, ncurses
+  and it's dependencies: bsd, gpm & tinfo).
+
+1.4.7.0 May 18 2020
+- Don't detect CD/DVD drives.
+
+1.4.6.0  May 15 2020
+- Rename -v|--vendor to -m|--mirror.
+- Add scsipt for non-NVMe devices, similar to vuc.
+- Get error infomation log will retrieve all entries and decode in a table
+  format.
+- FFU messages streamlined.
+- Remove 'Command Executed Successfully' statement.
+- Removed readlba, rewritelba and writelba commands.
+- Getlog improvments decoding device self test log (6h).
+- Fix show --show-duplicates in Linux, with devices with many namespaces.
+- Idd -n decoding will honor the NVMe spec version (eg, 1.3, 1.4). Changes a
+  few yes/no to supported/not supported.
+- Add ns-attach, ns-create, ns-delete and ns-detach. Also update idd -c -l
+  to list controllers (13h).
+- Add ns-attach, ns-create, ns-delete and ns-detach. Also update idd
+- Able to support redirection from stdin (eg wdckit < commands.txt).
+
+1.4.5.0  May 06 2020
+- Synthesize idd -n -l on Windows (inbox driver).
+- Fix Windows idd -n with namespaces from the same NVMe controller.
+- Version will show OS info. Log file will show OS info.
+- Show non-text output will split the main device from it's duplicates.
+
+1.4.4.0  May 05 2020
+- IDD --namespace will search for other devices with the same namespace GUID.
+  For example /dev/nvme0 and /dev/nvme0n1.
+
+1.4.3.0  May 04 2020
+- Add -f|--file <filename> to get eye diagram. The raw data will be saved to
+  <filename>. This command can run only on a single device.
+- Add OS (Linux/Windows) to JSON/XML/CSV/CSV output (application section).
+- Show shall detect DHSMR for SCSI devices (inquiry VPD B6h field ZONED BLOCK
+  DEVICE EXTENTION is 2h).
+
+1.4.2.0  May 04 2020
+- Removed get eye diagram absolute limits for phase/voltage low/high argument
+  validation.
+
+1.4.1.0  May 04 2020
+- Get eye diagram will allow phase voltage arg to be from -80 to 80 for NVMe.
+- Show --assets adds OUI, Type (logical/physical), RAID state, Device Type
+  (HDD/SSD), RPM and Recording Technology (CMR/SMR).
+- Readlba, rewtitelba and writelba logging will cap data dump to 128 bytes
+  and switch ATA from read/write DMA ext to read/write sector ext (PIO).
+- ChromeOS (Chromebook) for Linux boot device fix (look for /home in 
+  /etc/mtab).
+- Add a footer for each command to the log. This will include the elapsed
+  time (wall - like a clock on the wall), user and kernel CPU time and
+  percentage.
+- List NVMe namespaces for Windows inbox doesn't work (Windows and/or driver
+  issue), so operation is not supported will be shown instead of incorrect
+  values.
+- Show non-text output will include type of device (SSD/HDD), RPM and
+  recording technology (CMR/SMR).
+- Add rewrite. Read and writes same data.
+
+1.4.0.0  Apr 27 2020
+- Bump version for release.
+
+1.3.10.0  Apr 20 2020
+- Getpersistentevent create context will round up to a 512 byte aligned
+  transfer.
+- Update activate changed -s|--slot to optional (no longer required) and
+  defaults to 1.
+
+1.3.9.0  Apr 17 2020
+- Fix crash seen on Linux ARM 64. Issue related to boost::filesystem.
+
+1.3.8.0  Apr 17 2020
+- Get eye diagram support L-H drives.
+- Documentation fix for eula, quit, setfeature and version.
+
+1.3.7.0  Apr 14 2020
+- Removed 'debug' and 'serverconfig' from --cssd-nvme help.
+- Switch z compression library to miniz source/header only.
+- User guide removes support for Linux Arm 64-bit and shows a bit more info
+  about how to help and quit the interactive CLI session.
+- atalog, getfeature, getsmart, hmb, readlog: added -s|--save <path>.
+- atalog -s|--smartlog renamed to -S|--smartlog.
+- getfeature -s|--select renamed to -S|--select.
+- getdui, geteyediagram, getlog, getpe, getpersistentevent, logdump:
+  -f|--file <path> renamed to -s|--save <path>.
+- getsmr: rename -o|--output-path <path> to -s|--save <path>
+- logdump: rename -s|--serial to -S|--serial.
+- getpersistentevent, hmb: -r|--raw added.
+- getsmart -r|--readdata renamed to -r|--raw. -s|--status renamed to
+  -S|--status.
+- readlog -s|--smart renamed to -S|--smart.
+- Added --progress-bar to erase, format, getdui, logdump, readlba,
+  selftest, update and writelba. Make --simple-progress the default.
+- Added -t|--table to help to generate two CSV files with all of the commands
+  and all of the single letter command line arguments.
+- get merged into getfeature and set merged into setfeature.
+- Interactive CLI will show a bit more info, how to get help and quit.
+
+1.3.6.0  Apr 08 2020
+- Another fix for geteyediagram - read large files in segments.
+- Update --xml will update only if the model & firmware are matched. The
+  XML schema is as follows:
+  <lista_devices>
+    <lista_device model=string>
+      <url>string<url>
+    </lista_device>
+  </lista_devices>
+  Where the xml attribute model <string> is the exact model string of the
+  device and the url <string> is the filename of another XML file, with this
+  schema:
+  <ffu>
+    <fwfile>string</fwfile>
+    <dependency>string</dependency>
+    <fwversion>string</fwversion>
+  </ffu>
+  Where the fwfile <string> is the FFU filename, the dependency <string> is
+  the old firmware version and the fwversion <string> is the new firmware
+  version.
+
+1.3.5.0  Apr 08 2020
+- Fix for geteyediagram - read large files in segments.
+
+1.3.4.0  Apr 07 2020
+- Fix NVMe update on RAID'd devices.
+- Add --nsid <value> and -v|--vendor to assert and geteyediagram.
+- Getdui will attempt to collect data for CSMI devices (may not work for
+  SN340, due to FW inability to collect data in 64k chunks).
+- NVMe FFU activate adds a message to 'Reboot the system for firmware update
+  to take effect.'.
+- GetDUI logging size for Windows iRST reduced, similar to inbox driver.
+
+1.3.3.0  Mar 31 2020
+- Update with --xml option will do both download and activate.
+
+1.3.2.0  Mar 31 2020
+- Update adds --xml <xml filename>. The XML schema is as follows:
+  <lista_devices>
+    <lista_device model=string>
+      <url>string<url>
+    </lista_device>
+  </lista_devices>
+  The url string is expected to be an XML file, too, with this schema:
+  <ffu>
+    <fwfile>string<fwfile>
+  </ffu>
+  The fwfile string will be used much like the -f|--firmware file.
+  When --xml <xml filename> is present, all devices will be assumed if no
+  device is specified. This supports updating different targets with different
+  firmware filenames, too.
+- Get persistent event will release context if size was 0.
+- Fix write lba typo.
+- Update EULA for MegaRAID.
+
+1.3.1.0  Mar 30 2020
+- Experimental: get persistent event log shall ignore errors from 'release
+  context' command.
+
+1.3.0.0  Mar 27 2020
+- Bump version for release.
+
+1.2.16.0 Mar 24 2020
+- Fix Linux boot drive detection crash.
+- Don't make csmi devices all lowercase.
+- Show will --show-duplicates, in Linux will show the namespace device path
+  along with the controller device path.
+
+1.2.15.0 Mar 20 2020
+- Fix Linux NVMe device detection to always show the controller device (eg 
+  /dev/nvme0) and not the namespace device (/dev/nvme0n1).
+- Format -b|--bytes is now mandatory. Fix --serial or --model args. Help won't
+  show this twice: '<devList> ...'.
+- Show will excluded SES devices in Windows, when --block-device is present.
+- Logdump adds a few more warnings for modes that are unsupported or partially
+  collected.
+
+1.2.14.0 Mar 18 2020
+- Fix scanning of NVMe devices in Windows with an Intel RST driver.
+
+1.2.13.0 Mar 16 2020
+- Set feature will only use the VU command for Windows inbox driver when the
+  devices is a SanDisk devices.
+- Logdump for SSD --all_modes will include mode 0x17.
+
+1.2.12.0 Mar 16 2020
+- Another version of show --block-device.
+
+1.2.11.0 Mar 16 2020
+- Show adds --block-device to show only block devices (filters out SES).
+
+1.2.10.0 Mar 13 2020
+- Show adds -p|--physical to show only physical devices. Adds -l|--logical to
+  show only logical devices. Adds --no-usb to hide USB devices.
+- Standardized on naming convention for outputting files. It is now:
+  [path/]<serial>_<timestamp>_<type>_<version>.<ext>
+  Where timestamp is DDMMYYYY_HHMMSS.
+- Switched getpersistentevent log -R|--redirect <filename> to -R|--redirect
+  <path> and each device's output will be redirected to the path, using the
+  naming noted above (type=persistentevent, ext=txt).
+
+1.2.9.0  Mar 11 2020
+- Update will reject 0-length firmware binaries.
+
+1.2.8.0  Mar 09 2020
+- Windows build will include both an EXE and a ZIP file.
+- Bug fix getlog NVMe Error Information log.
+- Support device or file in geteyediagram, getlog, getpe and
+  getpersistentevent.
+
+1.2.7.0  Mar 04 2020
+- Fix flaky scanning.
+
+1.2.6.0  Mar 03 2020
+- Add geteyediagram command (based on a early draft).
+- NVMe idd (controller) adds persistent event log page supported.
+- Detects customer WD/Hgst NVMe Windows driver.
+
+1.2.5.0  Mar 02 2020
+- Show will collect MegaRAID physical drive state in JSON/XML/CSV output.
+- Getpersistentevent parsing per latest NVMe spec.
+- Format now supports SAS and L-H SATA.
+- Fix NVMe boot drive detection for Linux. This does not assume that
+  /dev/nvmeX is the base of /dev/nvmeXnY. Also, in scanning /etc/mtab, look
+  for /boot/efi in addition to /boot.
+
+1.2.4.0  Feb 20 2020
+- Added -c|--commit-action <ca value> to update, used by NVMe activation.
+- Support WD/Hgst Internal Use Only (IUO) Windows driver.
+
+1.2.3.0  Feb 14 2020
+- Fix getsmr crash with older L-W drives.
+- Logdump for L-H will collect extended usage data (<sn>_lgu2.bin) when 
+  --all-modes is present.
+- Fix possible crash scanning for devices.
+- Add offsets to NVMe parsing of 0xD0 log.
+
+1.2.2.0  Feb 07 2020
+- Update getlog output to mirror NvmeKit changes.
+- Logdump (Hgst) fix.
+- An IOCTL failure error changed from Comamnd not supported to command failed.
+- Fix update progress for SAS drives.
+- Bug fix for NVMe device OUI (seen with logical devices).
+- Change OUI 00-11-73 from SanDisk to Hgst.
+- Logdump restricted to L-H or L-W (removed L-S).
+- Getsmart for SATA will default to -a, not -s.
+- Add assert command for NVMe (enterprise) devices.
+
+1.2.0.0  Jan 27 2020
+- Bump version for release.
+
+1.1.2.0  Jan 23 2020
+- Windows will allow sesX devices.
+- Restrict format to Linux only.
+- If logging fails (wdckit.txt), don't send output to stdout.
+
+1.1.1.0  Jan 17 2020
+- Add -t|--timewait <seconds> to security.
+- SMRBin will collect more info and fix reading the configuration file.
+- NVMe security fixes.
+- Include app info to json/xml output (show/idd/getsmart).
+- Better warnings with bad command line inputs (debug, readlba, writelba).
+- Fix getfeatures HMB & APST output.
+- Show command, with --output json|xml|csv|csv-no-header (but not text) will
+  included a few extra fields: OUI (Organizationally unique identifier, aka
+  vendor ID), logical/physical drive, logical sector size, and the maximum
+  addressable LBA.
+- Send setfeatures or sethctmtemps for Windows inbox NVMe driver using VU
+  opcode.
+- Add --output text|json|xml|csv|csv-no-header to idd and getsmart commands.
+- Don't truncate serial numbers for Hgst NVMe devices.
+- Fixed Adaptec/Megaraid SAS/SATA drives showing up as NVMe devices.
+
+1.1.0.0  Jan 10 2020
+- Bump version for release.
+
+1.0.10.0  Jan 09 2020
+- Windows ATA detection fix.
+- Tweak logging message about devices added/skipped.
+
+1.0.9.0  Jan 08 2020
+- Fix boot device detection.
+
+1.0.8.0  Jan 06 2020
+- Sort device names bug (not fixed in 1.0.7.0).
+- Fix self test messages and will not block on devices that did not start
+  self test properly.
+- Able to detect boot drive in Linux with an active LVM.
+- Parse SCSI serial numbers differently (handles vendor/customer unique serial
+  numbers).
+
+1.0.7.0  Jan 02 2020
+- Sort Linux device names in ascending order (not alphabetically).
+- Fix logdump for Hgst drives. Also, filenames will end with lowercase 'bin'.
+- Update copyright year.
+
+1.0.6.0  Dec 23 2019
+- Logdump Supports NVMe drives that have a WD OUI (Apsen, for example).
+- Version shows more submodules - not Utiities doesn't have a version string.
+
+1.0.5.0  Dec 20 2019
+- Add thread safety in show command.
+- Show 'abnormal exit: <reason>' message for uncaught exceptions.
+- Windows: Detect USB / NVMe dongles (shows up as a 'USB' device and accepts
+  only SCSI commands).
+
+1.0.4.0  Dec 18 2019
+- Getdui fix - transfer 256k instead of 512k for DUI version 2.
+- Add --nsid <value> to: format, getfeature, getlog, getpersistentevent,
+  getsmart, selftest, setfeature and sethctmtemps.
+
+1.0.3.0  Dec 17 2019
+- Getdui fix when -d|--data-area is not present (note, defaults is -d 2).
+- AHCI fix - added new status code -134 (AHCI controller not found).
+
+1.0.2.0  Dec 16 2019
+- Getdui bug fix for logs > 4.3 GB.
+
+1.0.1.0  Dec 16 2019
+- Getdui supports DUI version 2.
+- Logging (--log-level) now defaults to cmd-debug and the buffer dumps will
+  be smaller. Logging for scanning for devices, however, remains as debug.
+- SCS-3417, 3418: Idd new options (-l|--list and --nsid). -l|--list shows the
+  NVMe namespace list. --nsid <value> will assign the nsid value.
+- SCS-3416: Add prerequisite and to install 'ncurses-compat-libs'.
+- SCS-3343, 3382, 3389, 3390, 3392, 3393, 3394: Add Adaptec support for
+  32/64-bit Windows and 64-bit Linux. Add MegaRAID support for 32/64-bit
+  Windows and Linux.
+- SCS-3342: Show Linux NVMe link speed and width.
+- SCS-3341: show adds an output option (--output <text|json|xml|csv|
+  csv-no-header) for output as json, xml, csv (with or without a
+  header). Suggest to use with -z|--nobanner and perhaps -R|--redirect.
+- ITR-22158: Getsmrbin shall collect more info.
+- ITR-22181: Getsmrbin shall collect more info.
+- SCS-3356: Fix atalog output and --pages command line option.
+- Getsmart support for some SAS drives.
+- Firmware update default data transfer size changed from 65536 to 8192
+  bytes.
+
+1.0.0.0  Nov 26 2019
+- Bump version for release.
+
+0.9.4.0  Nov 14 2019
+- Get persistent event log won't generate an error if the log size is 0. Save
+  or parse will state that the total log length is 0 and will not save or
+  parse it.
+- Removed yextscan submodule (unused).
+
+0.9.3.0  Nov 12 2019
+- Bug fix for getpersistentevent --vendor option.
+- Change 'Failure' to 'Failure (device reported an error)' or 'Operation is
+  not allowed' (the latter is reported in Windows for system error 1117 and
+  in Linux when the system ioctl call fails).
+- Don't exclude devices with an OUI value of 0 (maybe it's pre-production).
+- Bug fix for idd -n.
+- Bug fix for SCSI drive detection.
+- Modify version.
+- Modify help for vuc.
+- IDD for NVMe change text for data unit read/written.
+- Support Adaptec & MegaRAID HBAs for 64-bit Linux and 32/64 x86 bit Windows.
+- Improve output message for standby.
+- Erase via Sanitize will return immediately if command fails (ignoring
+  progress reporting).
+- Bug fix reading ATA GPL logs.
+
+0.9.2.0  Oct 28 2019
+- Complete security command (set admin password, enable user and set user
+  password, disable user, lock/unlock read/write, change password and revert).
+- Help now shows a statement to use --cssd-sata|--cssd-nvme|--chdd|-a|--all to
+  show help on a subset or all commands. In addition, commands are normal
+	or bold depending upon whether the command expects a unique customer
+	firmware or normal firmware.
+- Add examples to <command-name> -h output.
+- Updates per Legal/Protex scan (Third-Party_Notices.txt added to package).
+- Removed --debug <filename> option, which is now always present (wdckit.txt).
+- Add --log-level <silent|error|info|debug|cmd-debug> to control level of
+  info for wdckit.txt log file.
+- Added more commands to security (set, enable, disable, lock, change and
+  revert).
+- Add error code -192 (TCG Opal not allowed) in security psid revert if
+  security is not activated.
+- All security commands for ATA devices in Linux will return error -21
+  (Operation is not allowed) if /sys/module/libata/parameters/allow_tpm=0.
+- Add vuc command.
+- Require an option for do-not-operate.
+- Require one or both args for sethctmtemps.
+- TCLAP change for XOR args and missing required args.
+
+0.9.1.2  Oct 14 2019
+- Windows fix for saving binary files (instead of text mode).
+- Parsing ATA log address 7h will not show an LBA for aborted tests.
+- Erase --block changed to --blockerase.
+- Get --parameter-list changed to --parameterlist.
+- Getsmart --raw changed to --readdata and --failed changed to --fail.
+- Readlog --smartlog changed to --smart.
+- Selftest adds -r|--result for -e|--extended self test.
+- Writelog --smartlog changed to --smart.
+
+0.9.1.1  Oct 11 2019
+- Another getdui change.
+
+0.9.1.0  Oct 11 2019
+- WDCKit Beta Release.
+- Added User's Guide (WDCKit_Users_Guide.pdf).
+- Revise EULA.
+- Detect Microsoft Storage Space individual devices behind soft RAID.
+- Add command restrictions (eg, most commands only operate on WDC devices).
+- Fix getdui.
+- Logdump will create the output directory if it does not exist.
+- Logdump adds support for L-W devices.
+- Add getsmr, which retrieves logs from a L-W device.
+- Erase command adds -x|--exit-failure-mode, which will issue a sanitize exit
+  failure mode operation on an NVMe device.
+- Getlog renamed command line option --pages to --page. Added -l|--lsp to
+  specify the NVMe log specific field.
+- Getsmart command no longer requires -a|--attributes, -r|--raw or -s|--status
+  options. It will default to -s|--status.
+- Power command line argument -p|--power now expects a number (0 or 1).
+- Selftest command line argument --shorttest is now --short, --extendedtest is
+  now --extended. Added -a|--abort to abort self test.
+- Show command will show current/capable link speeds, when retrievable
+  (info only retrievable for Windows NVMe and SATA devices).
+- Update command -s|--slot value will be validated (allows only 1-7).
+- L-H devices serial number shall be sanitized.
+- Windows version info includes another submodule (yextwincom).
+- Added following new status codes:
+    -500: Drive not ready: format in progress
+    -501: Drive not ready: foreground self test in progress
+    -502: The device does not support Cryptographic Erase
+
+0.9.0.0  Sep 04 2019
+- Initial alpha release.
